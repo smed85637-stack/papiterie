@@ -135,10 +135,16 @@ button{padding:9px 10px}
 
   <div class="login-box" id="loginBox">
     <h3>تسجيل دخول المدير</h3>
+
+    <div class="notice">
+      الإيميل: admin@waraqa.com<br>
+      الكود: 12345
+    </div>
+
     <input id="adminEmail" type="email" placeholder="إيميل المدير">
     <input id="adminPass" type="password" placeholder="كود المدير">
+
     <button class="btn-main" style="width:100%" onclick="loginAdmin()">دخول</button>
-    <p style="font-size:12px;color:#64748b">الإيميل: admin@waraqa.com | الكود: 12345</p>
   </div>
 
   <div class="admin-box hidden" id="adminContent">
@@ -217,6 +223,8 @@ const ADMIN_EMAIL = "admin@waraqa.com";
 const ADMIN_PASS = "12345";
 const STORE_WHATSAPP = "37929637";
 
+let adminLogged = false;
+
 const ALL_CATEGORIES = [
   "الكل",
   "دفاتر وكراسات",
@@ -285,6 +293,10 @@ function getSettings(){
   return settings;
 }
 
+function saveCart(){
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 function isImage(value){
   value = String(value || "");
   return value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:image");
@@ -298,10 +310,6 @@ function getProductImageHtml(product){
     return `<img src="${escapeHtml(product.icon)}" alt="${escapeHtml(product.name)}">`;
   }
   return escapeHtml(product.icon || "📦");
-}
-
-function saveCart(){
-  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function renderAdminCategoryOptions(){
@@ -368,6 +376,7 @@ function addToCart(id){
   if(!product) return;
 
   const existing = cart.find(item => Number(item.id) === Number(id));
+
   if(existing){
     existing.qty += 1;
   }else{
@@ -446,10 +455,76 @@ function closeCart(){
 
 function openAdmin(){
   document.getElementById("adminPanel").classList.add("open");
+
+  if(!adminLogged){
+    document.getElementById("loginBox").classList.remove("hidden");
+    document.getElementById("adminContent").classList.add("hidden");
+  }
 }
 
 function closeAdmin(){
   document.getElementById("adminPanel").classList.remove("open");
+}
+
+function loginAdmin(){
+  const email = document.getElementById("adminEmail").value.trim();
+  const pass = document.getElementById("adminPass").value.trim();
+
+  if(email === ADMIN_EMAIL && pass === ADMIN_PASS){
+    adminLogged = true;
+    showAdmin();
+  }else{
+    alert("الإيميل أو الكود غير صحيح");
+  }
+}
+
+function showAdmin(){
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("adminContent").classList.remove("hidden");
+
+  renderAdminProducts();
+  renderInvoices();
+  renderManualItems();
+  loadSettings();
+}
+
+function logoutAdmin(){
+  adminLogged = false;
+
+  document.getElementById("adminEmail").value = "";
+  document.getElementById("adminPass").value = "";
+
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("adminContent").classList.add("hidden");
+}
+
+function showTab(tab){
+  document.getElementById("productsAdminSection").classList.add("hidden");
+  document.getElementById("invoicesAdminSection").classList.add("hidden");
+  document.getElementById("settingsAdminSection").classList.add("hidden");
+
+  document.getElementById("tabProducts").classList.remove("active");
+  document.getElementById("tabInvoices").classList.remove("active");
+  document.getElementById("tabSettings").classList.remove("active");
+
+  if(tab === "products"){
+    document.getElementById("productsAdminSection").classList.remove("hidden");
+    document.getElementById("tabProducts").classList.add("active");
+    renderAdminProducts();
+  }
+
+  if(tab === "invoices"){
+    document.getElementById("invoicesAdminSection").classList.remove("hidden");
+    document.getElementById("tabInvoices").classList.add("active");
+    renderInvoices();
+    renderManualItems();
+  }
+
+  if(tab === "settings"){
+    document.getElementById("settingsAdminSection").classList.remove("hidden");
+    document.getElementById("tabSettings").classList.add("active");
+    loadSettings();
+  }
 }
 
 function chooseProductImage(event){
@@ -469,6 +544,7 @@ function chooseProductImage(event){
     img.onload = function(){
       const canvas = document.createElement("canvas");
       const maxSize = 700;
+
       let width = img.width;
       let height = img.height;
 
@@ -498,6 +574,7 @@ function chooseProductImage(event){
 
 function updateImagePreview(){
   const box = document.getElementById("imagePreview");
+
   if(selectedProductImage){
     box.innerHTML = `<img src="${selectedProductImage}" alt="صورة المنتج">`;
   }else{
@@ -540,6 +617,7 @@ function saveProduct(){
   setProducts(products);
   clearProductForm();
   renderAll();
+
   alert("تم حفظ المنتج");
 }
 
@@ -596,10 +674,6 @@ function deleteProduct(id){
   renderAll();
 }
 
-function cancelEdit(){
-  clearProductForm();
-}
-
 function clearProductForm(){
   document.getElementById("editId").value = "";
   document.getElementById("productName").value = "";
@@ -615,10 +689,16 @@ function clearProductForm(){
   document.getElementById("cancelEditBtn").classList.add("hidden");
 }
 
+function cancelEdit(){
+  clearProductForm();
+}
+
 function restoreDefaultProducts(){
   if(!confirm("هل تريد إعادة المنتجات الافتراضية؟")) return;
+
   localStorage.setItem("products", JSON.stringify(defaultProducts));
   renderAll();
+
   alert("تمت إعادة المنتجات الافتراضية");
 }
 
@@ -764,6 +844,7 @@ function saveManualInvoice(){
 function renderInvoices(){
   const invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
   const box = document.getElementById("invoicesList");
+
   if(!box) return;
 
   if(invoices.length === 0){
@@ -928,63 +1009,6 @@ function deleteInvoice(id){
   renderInvoices();
 }
 
-function loginAdmin(){
-  const email = document.getElementById("adminEmail").value.trim();
-  const pass = document.getElementById("adminPass").value.trim();
-
-  if(email === ADMIN_EMAIL && pass === ADMIN_PASS){
-    localStorage.setItem("adminLogged","yes");
-    showAdmin();
-  }else{
-    alert("الإيميل أو الكود غير صحيح");
-  }
-}
-
-function showAdmin(){
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("adminContent").classList.remove("hidden");
-
-  renderAdminProducts();
-  renderInvoices();
-  renderManualItems();
-  loadSettings();
-}
-
-function logoutAdmin(){
-  localStorage.removeItem("adminLogged");
-  document.getElementById("loginBox").classList.remove("hidden");
-  document.getElementById("adminContent").classList.add("hidden");
-}
-
-function showTab(tab){
-  document.getElementById("productsAdminSection").classList.add("hidden");
-  document.getElementById("invoicesAdminSection").classList.add("hidden");
-  document.getElementById("settingsAdminSection").classList.add("hidden");
-
-  document.getElementById("tabProducts").classList.remove("active");
-  document.getElementById("tabInvoices").classList.remove("active");
-  document.getElementById("tabSettings").classList.remove("active");
-
-  if(tab === "products"){
-    document.getElementById("productsAdminSection").classList.remove("hidden");
-    document.getElementById("tabProducts").classList.add("active");
-    renderAdminProducts();
-  }
-
-  if(tab === "invoices"){
-    document.getElementById("invoicesAdminSection").classList.remove("hidden");
-    document.getElementById("tabInvoices").classList.add("active");
-    renderInvoices();
-    renderManualItems();
-  }
-
-  if(tab === "settings"){
-    document.getElementById("settingsAdminSection").classList.remove("hidden");
-    document.getElementById("tabSettings").classList.add("active");
-    loadSettings();
-  }
-}
-
 function loadSettings(){
   const settings = getSettings();
   document.getElementById("storeNameInput").value = settings.storeName;
@@ -1021,9 +1045,8 @@ function init(){
   updateImagePreview();
   renderAll();
 
-  if(localStorage.getItem("adminLogged") === "yes"){
-    showAdmin();
-  }
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("adminContent").classList.add("hidden");
 }
 
 init();
