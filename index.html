@@ -8,40 +8,40 @@
   <style>
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Tahoma, sans-serif;
     }
 
     body {
       margin: 0;
-      background: #f4f7f8;
-      color: #123;
+      background: #f3f7f7;
+      color: #102a2a;
     }
 
     header {
-      background: linear-gradient(135deg, #0f766e, #115e59);
+      background: linear-gradient(135deg, #0f766e, #064e3b);
       color: white;
-      padding: 18px;
+      padding: 16px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.18);
     }
 
     .topbar {
+      max-width: 1200px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      max-width: 1200px;
-      margin: auto;
     }
 
     .logo {
       font-size: 22px;
-      font-weight: bold;
+      font-weight: 900;
     }
 
-    .header-buttons {
+    .top-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
@@ -51,11 +51,11 @@
       border: none;
       border-radius: 12px;
       padding: 10px 14px;
-      cursor: pointer;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    .btn-light {
+    .btn-white {
       background: white;
       color: #0f766e;
     }
@@ -65,12 +65,12 @@
       color: white;
     }
 
-    .btn-danger {
+    .btn-red {
       background: #dc2626;
       color: white;
     }
 
-    .btn-warning {
+    .btn-orange {
       background: #f59e0b;
       color: white;
     }
@@ -79,16 +79,17 @@
       background: white;
       padding: 28px 15px;
       text-align: center;
+      border-bottom: 1px solid #e5e7eb;
     }
 
     .hero h1 {
       color: #0f766e;
-      margin-bottom: 8px;
+      margin: 0 0 8px;
     }
 
     .hero p {
-      color: #555;
-      margin-top: 0;
+      margin: 0;
+      color: #64748b;
     }
 
     .container {
@@ -97,20 +98,30 @@
       padding: 15px;
     }
 
-    .search-box {
+    .search-row {
       display: flex;
       gap: 10px;
       margin: 15px 0;
       flex-wrap: wrap;
     }
 
-    .search-box input,
-    .search-box select {
-      flex: 1;
-      min-width: 160px;
+    input,
+    select,
+    textarea {
+      width: 100%;
       padding: 12px;
-      border: 1px solid #ddd;
+      border: 1px solid #d1d5db;
       border-radius: 12px;
+      outline: none;
+      margin: 6px 0;
+      background: white;
+    }
+
+    .search-row input,
+    .search-row select {
+      flex: 1;
+      min-width: 180px;
+      margin: 0;
     }
 
     .categories {
@@ -139,25 +150,37 @@
       margin-top: 15px;
     }
 
-    .product-card {
+    .card {
       background: white;
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 15px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.08);
       text-align: center;
       position: relative;
+      overflow: hidden;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #f59e0b;
+      color: white;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 50px;
     }
 
     .product-img {
-      width: 95px;
-      height: 95px;
-      margin: auto;
-      border-radius: 18px;
-      background: #e0f2f1;
+      width: 92px;
+      height: 92px;
+      border-radius: 20px;
+      margin: 18px auto 10px;
+      background: #ccfbf1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 46px;
+      font-size: 45px;
       overflow: hidden;
     }
 
@@ -167,46 +190,40 @@
       object-fit: cover;
     }
 
-    .product-card h3 {
-      margin: 12px 0 6px;
+    .card h3 {
       font-size: 16px;
+      margin: 8px 0;
+    }
+
+    .desc {
+      color: #64748b;
+      font-size: 13px;
+      min-height: 36px;
     }
 
     .price {
-      font-weight: bold;
       color: #0f766e;
-      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 900;
+      margin: 8px 0 12px;
     }
 
-    .badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #f59e0b;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-    }
-
-    .cart-panel,
-    .admin-panel {
+    .side-panel {
       position: fixed;
       top: 0;
       left: -100%;
-      width: 380px;
+      width: 420px;
       max-width: 95%;
       height: 100%;
       background: white;
-      z-index: 999;
+      z-index: 2000;
+      box-shadow: 5px 0 25px rgba(0,0,0,0.25);
       transition: 0.3s;
-      box-shadow: 4px 0 20px rgba(0,0,0,0.25);
       padding: 18px;
       overflow-y: auto;
     }
 
-    .cart-panel.open,
-    .admin-panel.open {
+    .side-panel.open {
       left: 0;
     }
 
@@ -217,80 +234,80 @@
       margin-bottom: 15px;
     }
 
-    .close-btn {
-      background: #eee;
-      color: #333;
+    .close {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      width: 38px;
-      height: 38px;
+      background: #e5e7eb;
+      color: #111827;
+      font-size: 20px;
     }
 
     .cart-item {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
       gap: 8px;
-      border-bottom: 1px solid #eee;
+      align-items: center;
+      border-bottom: 1px solid #e5e7eb;
       padding: 12px 0;
-      align-items: center;
     }
 
-    .qty-box {
+    .qty {
       display: flex;
-      gap: 5px;
       align-items: center;
+      gap: 5px;
     }
 
-    .qty-box button {
+    .qty button {
       padding: 5px 9px;
-      border-radius: 8px;
-      background: #e0f2f1;
+      background: #ccfbf1;
       color: #0f766e;
+      border-radius: 8px;
     }
 
-    .total-box {
-      background: #e0f2f1;
-      padding: 15px;
-      border-radius: 15px;
+    .total {
       margin-top: 15px;
-      font-size: 18px;
-      font-weight: bold;
+      background: #ccfbf1;
+      border-radius: 16px;
+      padding: 15px;
       display: flex;
       justify-content: space-between;
+      font-size: 19px;
+      font-weight: 900;
     }
 
-    .admin-login,
-    .admin-content {
+    .empty {
       background: #f8fafc;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 15px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+      color: #64748b;
     }
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 11px;
-      margin: 7px 0;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+    .login-box,
+    .admin-box {
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 18px;
+      margin-bottom: 14px;
     }
 
-    .admin-tabs {
+    .tabs {
       display: flex;
-      gap: 6px;
+      gap: 7px;
       flex-wrap: wrap;
       margin: 12px 0;
     }
 
-    .admin-tabs button {
-      background: #e0f2f1;
-      color: #0f766e;
+    .tabs button {
       flex: 1;
       min-width: 95px;
+      background: #ccfbf1;
+      color: #0f766e;
     }
 
-    .admin-tabs button.active {
+    .tabs button.active {
       background: #0f766e;
       color: white;
     }
@@ -299,7 +316,7 @@
     .invoice-card {
       background: white;
       padding: 12px;
-      border-radius: 14px;
+      border-radius: 16px;
       margin: 10px 0;
       box-shadow: 0 3px 10px rgba(0,0,0,0.07);
     }
@@ -313,7 +330,7 @@
 
     th,
     td {
-      border: 1px solid #ddd;
+      border: 1px solid #d1d5db;
       padding: 8px;
       text-align: center;
     }
@@ -324,62 +341,40 @@
     }
 
     .hidden {
-      display: none;
-    }
-
-    .empty {
-      text-align: center;
-      color: #777;
-      padding: 25px;
-      background: white;
-      border-radius: 15px;
+      display: none !important;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      color: #666;
-    }
-
-    @media print {
-      body * {
-        visibility: hidden;
-      }
-
-      #printArea,
-      #printArea * {
-        visibility: visible;
-      }
-
-      #printArea {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        background: white;
-      }
+      padding: 22px;
+      color: #64748b;
     }
 
     @media (max-width: 600px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .product-card {
-        padding: 10px;
-      }
-
-      .product-img {
-        width: 75px;
-        height: 75px;
-        font-size: 36px;
-      }
-
       .logo {
         font-size: 18px;
       }
 
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card {
+        padding: 10px;
+      }
+
+      .product-img {
+        width: 72px;
+        height: 72px;
+        font-size: 34px;
+      }
+
       button {
         padding: 9px 10px;
+      }
+
+      .cart-item {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -389,25 +384,24 @@
 
 <header>
   <div class="topbar">
-    <div class="logo">📚 الوراقة الإلكترونية</div>
+    <div class="logo" id="logoText">📚 الوراقة الإلكترونية</div>
 
-    <div class="header-buttons">
-      <button class="btn-light" onclick="openCart()">🛒 السلة <span id="cartCount">0</span></button>
-      <button class="btn-light" onclick="openAdmin()">⚙️ لوحة التحكم</button>
+    <div class="top-actions">
+      <button class="btn-white" onclick="openCart()">🛒 السلة <span id="cartCount">0</span></button>
+      <button class="btn-white" onclick="openAdmin()">⚙️ لوحة التحكم</button>
     </div>
   </div>
 </header>
 
 <section class="hero">
-  <h1>مرحبا بكم في الوراقة الإلكترونية</h1>
-  <p>منتجات مدرسية، مكتبية، طباعة، نسخ، أدوات وملحقات بأسعار مناسبة</p>
+  <h1>الوراقة الإلكترونية</h1>
+  <p>دفاتر، أقلام، طباعة، أوراق، ملفات، لوازم مدرسية وخدمات مكتبية</p>
 </section>
 
 <main class="container">
-
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="ابحث عن منتج..." oninput="renderProducts()" />
-    <select id="sortSelect" onchange="renderProducts()">
+  <div class="search-row">
+    <input id="searchInput" type="text" placeholder="ابحث عن منتج..." oninput="renderProducts()">
+    <select id="sortInput" onchange="renderProducts()">
       <option value="">ترتيب المنتجات</option>
       <option value="low">السعر من الأقل</option>
       <option value="high">السعر من الأعلى</option>
@@ -418,20 +412,19 @@
   <div class="categories" id="categoriesBox"></div>
 
   <section class="products" id="productsBox"></section>
-
 </main>
 
-<!-- السلة للزبون فقط بدون فاتورة -->
-<aside class="cart-panel" id="cartPanel">
+<!-- السلة للزبون فقط: لا توجد فاتورة هنا -->
+<aside class="side-panel" id="cartPanel">
   <div class="panel-head">
     <h2>🛒 السلة</h2>
-    <button class="close-btn" onclick="closeCart()">×</button>
+    <button class="close" onclick="closeCart()">×</button>
   </div>
 
   <div id="cartItems"></div>
 
-  <div class="total-box">
-    <span>المجموع:</span>
+  <div class="total">
+    <span>المجموع</span>
     <span id="cartTotal">0 MRU</span>
   </div>
 
@@ -439,130 +432,127 @@
     إرسال الطلب عبر واتساب
   </button>
 
-  <button class="btn-danger" style="width:100%; margin-top:8px;" onclick="clearCart()">
+  <button class="btn-red" style="width:100%; margin-top:8px;" onclick="clearCart()">
     حذف السلة
   </button>
 </aside>
 
-<!-- لوحة التحكم -->
-<aside class="admin-panel" id="adminPanel">
+<!-- لوحة التحكم: المنتجات + الفواتير -->
+<aside class="side-panel" id="adminPanel">
   <div class="panel-head">
     <h2>⚙️ لوحة التحكم</h2>
-    <button class="close-btn" onclick="closeAdmin()">×</button>
+    <button class="close" onclick="closeAdmin()">×</button>
   </div>
 
-  <div id="adminLogin" class="admin-login">
+  <div class="login-box" id="loginBox">
     <h3>تسجيل دخول المدير</h3>
-    <input type="email" id="adminEmail" placeholder="إيميل المدير" />
-    <input type="password" id="adminCode" placeholder="كود المدير" />
-    <button class="btn-main" style="width:100%;" onclick="adminLogin()">دخول</button>
-    <p style="font-size:12px;color:#777;">الإيميل: Aichetou@gmail.com | الكود: 12345</p>
+    <input id="adminEmail" type="email" placeholder="إيميل المدير">
+    <input id="adminPass" type="password" placeholder="كود المدير">
+    <button class="btn-main" style="width:100%;" onclick="loginAdmin()">دخول</button>
+    <p style="font-size:12px;color:#64748b;">الإيميل: admin@waraqa.com | الكود: 12345</p>
   </div>
 
-  <div id="adminContent" class="admin-content hidden">
-
-    <div class="admin-tabs">
-      <button id="tabProducts" class="active" onclick="showAdminTab('products')">📦 المنتجات</button>
-      <button id="tabInvoices" onclick="showAdminTab('invoices')">🧾 الفواتير</button>
-      <button id="tabSettings" onclick="showAdminTab('settings')">⚙️ الإعدادات</button>
+  <div class="admin-box hidden" id="adminContent">
+    <div class="tabs">
+      <button id="tabProducts" class="active" onclick="showTab('products')">📦 المنتجات</button>
+      <button id="tabInvoices" onclick="showTab('invoices')">🧾 الفواتير</button>
+      <button id="tabSettings" onclick="showTab('settings')">⚙️ الإعدادات</button>
     </div>
 
-    <!-- قسم المنتجات -->
-    <div id="adminProductsBox">
-
+    <section id="productsAdminSection">
       <h3 id="formTitle">إضافة منتج</h3>
 
-      <input type="hidden" id="editProductId" />
+      <input type="hidden" id="editId">
 
-      <input type="text" id="productName" placeholder="اسم المنتج" />
+      <input id="productName" type="text" placeholder="اسم المنتج">
 
       <select id="productCategory">
         <option value="دفاتر وكراسات">دفاتر وكراسات</option>
         <option value="أقلام وكتابة">أقلام وكتابة</option>
         <option value="طباعة وتصوير">طباعة وتصوير</option>
-        <option value="لوازم مدرسية">لوازم مدرسية</option>
         <option value="أوراق وملفات">أوراق وملفات</option>
-        <option value="هدايا وتغليف">هدايا وتغليف</option>
+        <option value="لوازم مدرسية">لوازم مدرسية</option>
+        <option value="حقائب وهدايا">حقائب وهدايا</option>
         <option value="إكسسوارات مكتبية">إكسسوارات مكتبية</option>
       </select>
 
-      <input type="number" id="productPrice" placeholder="السعر MRU" />
-
-      <input type="text" id="productIcon" placeholder="أيقونة أو رابط صورة مثال: 📘 أو https://..." />
-
+      <input id="productPrice" type="number" placeholder="السعر MRU">
+      <input id="productIcon" type="text" placeholder="أيقونة أو رابط صورة مثال: 📘">
       <textarea id="productDesc" placeholder="وصف المنتج"></textarea>
 
       <button class="btn-main" style="width:100%;" onclick="saveProduct()">حفظ المنتج</button>
+      <button class="btn-orange hidden" id="cancelEditBtn" style="width:100%; margin-top:8px;" onclick="cancelEdit()">إلغاء التعديل</button>
 
-      <button class="btn-warning hidden" id="cancelEditBtn" style="width:100%; margin-top:8px;" onclick="cancelEdit()">
-        إلغاء التعديل
-      </button>
-
-      <h3>قائمة المنتجات</h3>
+      <h3>المنتجات الموجودة</h3>
       <div id="adminProductsList"></div>
-    </div>
+    </section>
 
-    <!-- قسم الفواتير داخل لوحة التحكم فقط -->
-    <div id="adminInvoicesBox" class="hidden">
+    <section id="invoicesAdminSection" class="hidden">
       <h3>🧾 الفواتير</h3>
+      <p style="color:#64748b;">الفاتورة تظهر هنا فقط داخل لوحة التحكم.</p>
       <div id="invoicesList"></div>
-    </div>
+    </section>
 
-    <!-- الإعدادات -->
-    <div id="adminSettingsBox" class="hidden">
+    <section id="settingsAdminSection" class="hidden">
       <h3>إعدادات المتجر</h3>
-      <input type="text" id="storeNameInput" placeholder="اسم المتجر" />
-      <input type="text" id="whatsappInput" placeholder="رقم واتساب مثال: 41835226" />
+      <input id="storeNameInput" type="text" placeholder="اسم المتجر">
+      <input id="whatsappInput" type="text" placeholder="رقم واتساب بدون رمز الدولة مثال: 41835226">
       <button class="btn-main" style="width:100%;" onclick="saveSettings()">حفظ الإعدادات</button>
-
-      <button class="btn-danger" style="width:100%; margin-top:15px;" onclick="logoutAdmin()">
-        خروج من لوحة التحكم
-      </button>
-    </div>
-
+      <button class="btn-red" style="width:100%; margin-top:12px;" onclick="logoutAdmin()">تسجيل الخروج</button>
+    </section>
   </div>
 </aside>
 
-<div id="printArea" class="hidden"></div>
-
 <footer>
-  جميع الحقوق محفوظة © الوراقة الإلكترونية
+  © جميع الحقوق محفوظة - الوراقة الإلكترونية
 </footer>
 
 <script>
-  const ADMIN_EMAIL = "Aichetou@gmail.com";
-  const ADMIN_CODE = "12345";
+  const ADMIN_EMAIL = "admin@waraqa.com";
+  const ADMIN_PASS = "12345";
 
   let selectedCategory = "الكل";
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
   const defaultProducts = [
-    { id: 1, name: "دفتر 100 صفحة", category: "دفاتر وكراسات", price: 50, icon: "📘", desc: "دفتر مدرسي بجودة جيدة" },
-    { id: 2, name: "كراس صغير", category: "دفاتر وكراسات", price: 30, icon: "📒", desc: "كراس صغير للكتابة اليومية" },
-    { id: 3, name: "دفتر رسم", category: "دفاتر وكراسات", price: 80, icon: "🎨", desc: "دفتر رسم للأطفال والطلاب" },
-    { id: 4, name: "قلم أزرق", category: "أقلام وكتابة", price: 10, icon: "🖊️", desc: "قلم كتابة أزرق" },
-    { id: 5, name: "قلم أسود", category: "أقلام وكتابة", price: 10, icon: "✒️", desc: "قلم كتابة أسود" },
-    { id: 6, name: "علبة أقلام تلوين", category: "أقلام وكتابة", price: 120, icon: "🖍️", desc: "ألوان مدرسية جميلة" },
-    { id: 7, name: "مسطرة", category: "لوازم مدرسية", price: 20, icon: "📏", desc: "مسطرة بلاستيكية" },
-    { id: 8, name: "ممحاة", category: "لوازم مدرسية", price: 10, icon: "🧽", desc: "ممحاة للطلاب" },
-    { id: 9, name: "مبراة", category: "لوازم مدرسية", price: 15, icon: "✏️", desc: "مبراة صغيرة" },
-    { id: 10, name: "آلة حاسبة", category: "لوازم مدرسية", price: 250, icon: "🧮", desc: "آلة حاسبة للدراسة" },
-    { id: 11, name: "ورق A4", category: "أوراق وملفات", price: 200, icon: "📄", desc: "رزمة ورق A4" },
-    { id: 12, name: "ملف بلاستيك", category: "أوراق وملفات", price: 40, icon: "📁", desc: "ملف لحفظ الأوراق" },
-    { id: 13, name: "نسخ وثيقة", category: "طباعة وتصوير", price: 5, icon: "🖨️", desc: "خدمة نسخ وتصوير" },
-    { id: 14, name: "طباعة ملونة", category: "طباعة وتصوير", price: 20, icon: "🌈", desc: "طباعة ملونة للوثائق" },
-    { id: 15, name: "تغليف هدية", category: "هدايا وتغليف", price: 60, icon: "🎁", desc: "تغليف هدايا بشكل جميل" },
-    { id: 16, name: "لاصق شفاف", category: "إكسسوارات مكتبية", price: 35, icon: "🧷", desc: "لاصق للمكتب والمدرسة" }
+    { id: 1, name: "دفتر 100 صفحة", category: "دفاتر وكراسات", price: 50, icon: "📘", desc: "دفتر مدرسي ممتاز للكتابة اليومية" },
+    { id: 2, name: "دفتر 200 صفحة", category: "دفاتر وكراسات", price: 90, icon: "📗", desc: "دفتر كبير بجودة عالية" },
+    { id: 3, name: "كراس صغير", category: "دفاتر وكراسات", price: 30, icon: "📒", desc: "كراس مناسب للتلاميذ" },
+    { id: 4, name: "دفتر رسم", category: "دفاتر وكراسات", price: 80, icon: "🎨", desc: "دفتر خاص بالرسم والتلوين" },
+
+    { id: 5, name: "قلم أزرق", category: "أقلام وكتابة", price: 10, icon: "🖊️", desc: "قلم كتابة أزرق" },
+    { id: 6, name: "قلم أسود", category: "أقلام وكتابة", price: 10, icon: "✒️", desc: "قلم كتابة أسود" },
+    { id: 7, name: "قلم رصاص", category: "أقلام وكتابة", price: 8, icon: "✏️", desc: "قلم رصاص مدرسي" },
+    { id: 8, name: "ألوان خشبية", category: "أقلام وكتابة", price: 120, icon: "🖍️", desc: "علبة ألوان جميلة للأطفال" },
+
+    { id: 9, name: "طباعة أبيض وأسود", category: "طباعة وتصوير", price: 5, icon: "🖨️", desc: "طباعة وثائق عادية" },
+    { id: 10, name: "طباعة ملونة", category: "طباعة وتصوير", price: 20, icon: "🌈", desc: "طباعة ملونة بجودة جيدة" },
+    { id: 11, name: "نسخ وثيقة", category: "طباعة وتصوير", price: 5, icon: "📄", desc: "نسخ وتصوير وثائق" },
+    { id: 12, name: "تغليف حراري", category: "طباعة وتصوير", price: 100, icon: "🪪", desc: "تغليف بطاقات ووثائق" },
+
+    { id: 13, name: "رزمة ورق A4", category: "أوراق وملفات", price: 200, icon: "📄", desc: "ورق أبيض للطباعة" },
+    { id: 14, name: "ملف بلاستيك", category: "أوراق وملفات", price: 40, icon: "📁", desc: "ملف لحفظ الأوراق" },
+    { id: 15, name: "حافظة أوراق", category: "أوراق وملفات", price: 70, icon: "🗂️", desc: "حافظة مكتبية منظمة" },
+
+    { id: 16, name: "مسطرة", category: "لوازم مدرسية", price: 20, icon: "📏", desc: "مسطرة مدرسية" },
+    { id: 17, name: "ممحاة", category: "لوازم مدرسية", price: 10, icon: "🧽", desc: "ممحاة ناعمة" },
+    { id: 18, name: "مبراة", category: "لوازم مدرسية", price: 15, icon: "✏️", desc: "مبراة صغيرة" },
+    { id: 19, name: "آلة حاسبة", category: "لوازم مدرسية", price: 250, icon: "🧮", desc: "آلة حاسبة للدراسة" },
+
+    { id: 20, name: "حقيبة مدرسية", category: "حقائب وهدايا", price: 450, icon: "🎒", desc: "حقيبة مدرسية جميلة" },
+    { id: 21, name: "تغليف هدية", category: "حقائب وهدايا", price: 60, icon: "🎁", desc: "تغليف هدايا مرتب" },
+
+    { id: 22, name: "لاصق شفاف", category: "إكسسوارات مكتبية", price: 35, icon: "🧷", desc: "لاصق للمكتب والمدرسة" },
+    { id: 23, name: "دباسة", category: "إكسسوارات مكتبية", price: 150, icon: "📎", desc: "دباسة مكتبية" },
+    { id: 24, name: "مشابك ورق", category: "إكسسوارات مكتبية", price: 25, icon: "📎", desc: "مشابك لتنظيم الأوراق" }
   ];
 
   function getProducts() {
     let products = JSON.parse(localStorage.getItem("products") || "null");
-
     if (!products) {
-      localStorage.setItem("products", JSON.stringify(defaultProducts));
-      return defaultProducts;
+      products = defaultProducts;
+      localStorage.setItem("products", JSON.stringify(products));
     }
-
     return products;
   }
 
@@ -572,7 +562,6 @@
 
   function getSettings() {
     let settings = JSON.parse(localStorage.getItem("settings") || "null");
-
     if (!settings) {
       settings = {
         storeName: "الوراقة الإلكترونية",
@@ -580,12 +569,25 @@
       };
       localStorage.setItem("settings", JSON.stringify(settings));
     }
-
     return settings;
   }
 
   function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function escapeHtml(text) {
+    return String(text || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function isImage(value) {
+    value = String(value || "");
+    return value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:image");
   }
 
   function renderCategories() {
@@ -594,8 +596,8 @@
     const box = document.getElementById("categoriesBox");
 
     box.innerHTML = categories.map(cat => `
-      <button class="cat-btn ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
-        ${cat}
+      <button class="cat-btn ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${escapeHtml(cat)}')">
+        ${escapeHtml(cat)}
       </button>
     `).join("");
   }
@@ -607,9 +609,9 @@
   }
 
   function renderProducts() {
-    let products = getProducts();
+    let products = [...getProducts()];
     const search = document.getElementById("searchInput").value.trim().toLowerCase();
-    const sort = document.getElementById("sortSelect").value;
+    const sort = document.getElementById("sortInput").value;
 
     if (selectedCategory !== "الكل") {
       products = products.filter(p => p.category === selectedCategory);
@@ -619,7 +621,7 @@
       products = products.filter(p =>
         p.name.toLowerCase().includes(search) ||
         p.category.toLowerCase().includes(search) ||
-        (p.desc || "").toLowerCase().includes(search)
+        String(p.desc || "").toLowerCase().includes(search)
       );
     }
 
@@ -635,33 +637,32 @@
     }
 
     box.innerHTML = products.map(p => `
-      <div class="product-card">
-        <span class="badge">${p.category}</span>
+      <div class="card">
+        <div class="badge">${escapeHtml(p.category)}</div>
 
         <div class="product-img">
-          ${isImage(p.icon) ? `<img src="${p.icon}" alt="${p.name}">` : (p.icon || "📦")}
+          ${isImage(p.icon)
+            ? `<img src="${escapeHtml(p.icon)}" alt="${escapeHtml(p.name)}">`
+            : escapeHtml(p.icon || "📦")
+          }
         </div>
 
-        <h3>${p.name}</h3>
-        <div class="price">${p.price} MRU</div>
-        <p style="font-size:13px;color:#666;min-height:35px;">${p.desc || ""}</p>
+        <h3>${escapeHtml(p.name)}</h3>
+        <div class="desc">${escapeHtml(p.desc)}</div>
+        <div class="price">${Number(p.price)} MRU</div>
 
-        <button class="btn-main" style="width:100%;" onclick="addToCart(${p.id})">
+        <button class="btn-main" style="width:100%;" onclick="addToCart(${Number(p.id)})">
           أضف إلى السلة
         </button>
       </div>
     `).join("");
   }
 
-  function isImage(value) {
-    return value && (value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:image"));
-  }
-
   function addToCart(id) {
-    const product = getProducts().find(p => p.id === id);
+    const product = getProducts().find(p => Number(p.id) === Number(id));
     if (!product) return;
 
-    const existing = cart.find(item => item.id === id);
+    const existing = cart.find(item => Number(item.id) === Number(id));
 
     if (existing) {
       existing.qty += 1;
@@ -669,7 +670,7 @@
       cart.push({
         id: product.id,
         name: product.name,
-        price: product.price,
+        price: Number(product.price),
         qty: 1
       });
     }
@@ -695,30 +696,29 @@
     box.innerHTML = cart.map(item => `
       <div class="cart-item">
         <div>
-          <strong>${item.name}</strong>
-          <br>
-          <small>${item.price} MRU</small>
+          <strong>${escapeHtml(item.name)}</strong><br>
+          <small>${Number(item.price)} MRU</small>
         </div>
 
-        <div class="qty-box">
-          <button onclick="changeQty(${item.id}, -1)">-</button>
-          <span>${item.qty}</span>
-          <button onclick="changeQty(${item.id}, 1)">+</button>
+        <div class="qty">
+          <button onclick="changeQty(${Number(item.id)}, -1)">-</button>
+          <strong>${Number(item.qty)}</strong>
+          <button onclick="changeQty(${Number(item.id)}, 1)">+</button>
         </div>
 
-        <button class="btn-danger" onclick="removeFromCart(${item.id})">حذف</button>
+        <button class="btn-red" onclick="removeFromCart(${Number(item.id)})">حذف</button>
       </div>
     `).join("");
   }
 
   function changeQty(id, amount) {
-    const item = cart.find(i => i.id === id);
+    const item = cart.find(i => Number(i.id) === Number(id));
     if (!item) return;
 
     item.qty += amount;
 
     if (item.qty <= 0) {
-      cart = cart.filter(i => i.id !== id);
+      cart = cart.filter(i => Number(i.id) !== Number(id));
     }
 
     saveCart();
@@ -726,7 +726,7 @@
   }
 
   function removeFromCart(id) {
-    cart = cart.filter(i => i.id !== id);
+    cart = cart.filter(i => Number(i.id) !== Number(id));
     saveCart();
     renderCart();
   }
@@ -762,7 +762,7 @@
     const settings = getSettings();
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-    saveOrderInvoice(cart, total);
+    saveInvoice(cart, total);
 
     let message = `طلب جديد من ${settings.storeName}%0A%0A`;
 
@@ -772,23 +772,26 @@
 
     message += `%0Aالمجموع: ${total} MRU`;
 
-    const phone = settings.whatsapp.replace(/\D/g, "");
+    let phone = String(settings.whatsapp || "").replace(/\D/g, "");
+    if (!phone) phone = "41835226";
+
     window.open(`https://wa.me/222${phone}?text=${message}`, "_blank");
 
     cart = [];
     saveCart();
     renderCart();
+    renderInvoices();
 
-    alert("تم حفظ الطلب في فواتير لوحة التحكم");
+    alert("تم إرسال الطلب وحفظ الفاتورة في لوحة التحكم");
   }
 
-  function saveOrderInvoice(orderItems, total) {
+  function saveInvoice(items, total) {
     let invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
 
     const invoice = {
       id: Date.now(),
       date: new Date().toLocaleString("ar"),
-      items: JSON.parse(JSON.stringify(orderItems)),
+      items: JSON.parse(JSON.stringify(items)),
       total: total
     };
 
@@ -796,80 +799,86 @@
     localStorage.setItem("invoices", JSON.stringify(invoices));
   }
 
-  function adminLogin() {
+  function loginAdmin() {
     const email = document.getElementById("adminEmail").value.trim();
-    const code = document.getElementById("adminCode").value.trim();
+    const pass = document.getElementById("adminPass").value.trim();
 
-    if (email === ADMIN_EMAIL && code === ADMIN_CODE) {
+    if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
       localStorage.setItem("adminLogged", "yes");
-      showAdminContent();
+      showAdmin();
     } else {
       alert("الإيميل أو الكود غير صحيح");
     }
   }
 
-  function showAdminContent() {
-    document.getElementById("adminLogin").classList.add("hidden");
+  function showAdmin() {
+    document.getElementById("loginBox").classList.add("hidden");
     document.getElementById("adminContent").classList.remove("hidden");
     renderAdminProducts();
     renderInvoices();
-    loadSettingsForm();
+    loadSettings();
   }
 
   function logoutAdmin() {
     localStorage.removeItem("adminLogged");
-    document.getElementById("adminLogin").classList.remove("hidden");
+    document.getElementById("loginBox").classList.remove("hidden");
     document.getElementById("adminContent").classList.add("hidden");
   }
 
-  function showAdminTab(tab) {
-    document.getElementById("adminProductsBox").classList.add("hidden");
-    document.getElementById("adminInvoicesBox").classList.add("hidden");
-    document.getElementById("adminSettingsBox").classList.add("hidden");
+  function showTab(tab) {
+    document.getElementById("productsAdminSection").classList.add("hidden");
+    document.getElementById("invoicesAdminSection").classList.add("hidden");
+    document.getElementById("settingsAdminSection").classList.add("hidden");
 
     document.getElementById("tabProducts").classList.remove("active");
     document.getElementById("tabInvoices").classList.remove("active");
     document.getElementById("tabSettings").classList.remove("active");
 
     if (tab === "products") {
-      document.getElementById("adminProductsBox").classList.remove("hidden");
+      document.getElementById("productsAdminSection").classList.remove("hidden");
       document.getElementById("tabProducts").classList.add("active");
       renderAdminProducts();
     }
 
     if (tab === "invoices") {
-      document.getElementById("adminInvoicesBox").classList.remove("hidden");
+      document.getElementById("invoicesAdminSection").classList.remove("hidden");
       document.getElementById("tabInvoices").classList.add("active");
       renderInvoices();
     }
 
     if (tab === "settings") {
-      document.getElementById("adminSettingsBox").classList.remove("hidden");
+      document.getElementById("settingsAdminSection").classList.remove("hidden");
       document.getElementById("tabSettings").classList.add("active");
-      loadSettingsForm();
+      loadSettings();
     }
   }
 
   function saveProduct() {
-    const idValue = document.getElementById("editProductId").value;
+    const editId = document.getElementById("editId").value;
     const name = document.getElementById("productName").value.trim();
     const category = document.getElementById("productCategory").value;
     const price = Number(document.getElementById("productPrice").value);
     const icon = document.getElementById("productIcon").value.trim() || "📦";
     const desc = document.getElementById("productDesc").value.trim();
 
-    if (!name || !price) {
-      alert("أدخل اسم المنتج والسعر");
+    if (!name || !price || price <= 0) {
+      alert("أدخل اسم المنتج والسعر بشكل صحيح");
       return;
     }
 
     let products = getProducts();
 
-    if (idValue) {
-      const id = Number(idValue);
+    if (editId) {
       products = products.map(p => {
-        if (p.id === id) {
-          return { id, name, category, price, icon, desc };
+        if (Number(p.id) === Number(editId)) {
+          return {
+            id: Number(editId),
+            name,
+            category,
+            price,
+            icon,
+            desc
+          };
         }
         return p;
       });
@@ -886,9 +895,11 @@
 
     setProducts(products);
     clearProductForm();
-    renderProducts();
     renderCategories();
+    renderProducts();
     renderAdminProducts();
+
+    alert("تم حفظ المنتج");
   }
 
   function renderAdminProducts() {
@@ -902,22 +913,21 @@
 
     box.innerHTML = products.map(p => `
       <div class="admin-product">
-        <strong>${p.icon} ${p.name}</strong>
-        <br>
-        <small>${p.category} | ${p.price} MRU</small>
-        <p style="font-size:13px;color:#666;">${p.desc || ""}</p>
+        <strong>${escapeHtml(p.icon)} ${escapeHtml(p.name)}</strong><br>
+        <small>${escapeHtml(p.category)} | ${Number(p.price)} MRU</small>
+        <p style="color:#64748b;font-size:13px;">${escapeHtml(p.desc)}</p>
 
-        <button class="btn-warning" onclick="editProduct(${p.id})">تعديل</button>
-        <button class="btn-danger" onclick="deleteProduct(${p.id})">حذف</button>
+        <button class="btn-orange" onclick="editProduct(${Number(p.id)})">تعديل</button>
+        <button class="btn-red" onclick="deleteProduct(${Number(p.id)})">حذف</button>
       </div>
     `).join("");
   }
 
   function editProduct(id) {
-    const product = getProducts().find(p => p.id === id);
+    const product = getProducts().find(p => Number(p.id) === Number(id));
     if (!product) return;
 
-    document.getElementById("editProductId").value = product.id;
+    document.getElementById("editId").value = product.id;
     document.getElementById("productName").value = product.name;
     document.getElementById("productCategory").value = product.category;
     document.getElementById("productPrice").value = product.price;
@@ -930,11 +940,11 @@
   function deleteProduct(id) {
     if (!confirm("هل تريد حذف المنتج؟")) return;
 
-    let products = getProducts().filter(p => p.id !== id);
+    let products = getProducts().filter(p => Number(p.id) !== Number(id));
     setProducts(products);
 
-    renderProducts();
     renderCategories();
+    renderProducts();
     renderAdminProducts();
   }
 
@@ -943,7 +953,7 @@
   }
 
   function clearProductForm() {
-    document.getElementById("editProductId").value = "";
+    document.getElementById("editId").value = "";
     document.getElementById("productName").value = "";
     document.getElementById("productPrice").value = "";
     document.getElementById("productIcon").value = "";
@@ -956,6 +966,8 @@
     const invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
     const box = document.getElementById("invoicesList");
 
+    if (!box) return;
+
     if (invoices.length === 0) {
       box.innerHTML = `<div class="empty">لا توجد فواتير بعد</div>`;
       return;
@@ -963,8 +975,8 @@
 
     box.innerHTML = invoices.map(inv => `
       <div class="invoice-card">
-        <h4>فاتورة رقم: ${inv.id}</h4>
-        <p>التاريخ: ${inv.date}</p>
+        <h3>فاتورة رقم: ${Number(inv.id)}</h3>
+        <p>التاريخ: ${escapeHtml(inv.date)}</p>
 
         <table>
           <thead>
@@ -978,95 +990,168 @@
           <tbody>
             ${inv.items.map(item => `
               <tr>
-                <td>${item.name}</td>
-                <td>${item.qty}</td>
-                <td>${item.price} MRU</td>
-                <td>${item.price * item.qty} MRU</td>
+                <td>${escapeHtml(item.name)}</td>
+                <td>${Number(item.qty)}</td>
+                <td>${Number(item.price)} MRU</td>
+                <td>${Number(item.price) * Number(item.qty)} MRU</td>
               </tr>
             `).join("")}
           </tbody>
         </table>
 
-        <h3>المجموع: ${inv.total} MRU</h3>
+        <h3 style="color:#0f766e;">المجموع: ${Number(inv.total)} MRU</h3>
 
-        <button class="btn-main" onclick="printInvoice(${inv.id})">🖨️ طباعة</button>
-        <button class="btn-danger" onclick="deleteInvoice(${inv.id})">حذف</button>
+        <button class="btn-main" onclick="printInvoice(${Number(inv.id)})">🖨️ طباعة الفاتورة</button>
+        <button class="btn-red" onclick="deleteInvoice(${Number(inv.id)})">حذف</button>
       </div>
     `).join("");
   }
 
   function printInvoice(id) {
     const invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
-    const inv = invoices.find(i => i.id === id);
+    const inv = invoices.find(i => Number(i.id) === Number(id));
     const settings = getSettings();
 
     if (!inv) return;
 
-    const printArea = document.getElementById("printArea");
+    const rows = inv.items.map(item => `
+      <tr>
+        <td>${escapeHtml(item.name)}</td>
+        <td>${Number(item.qty)}</td>
+        <td>${Number(item.price)} MRU</td>
+        <td>${Number(item.price) * Number(item.qty)} MRU</td>
+      </tr>
+    `).join("");
 
-    printArea.classList.remove("hidden");
+    const html = `
+      <!DOCTYPE html>
+      <html lang="ar" dir="rtl">
+      <head>
+        <meta charset="UTF-8">
+        <title>فاتورة</title>
+        <style>
+          body {
+            font-family: Arial, Tahoma, sans-serif;
+            padding: 30px;
+            direction: rtl;
+            color: #102a2a;
+          }
 
-    printArea.innerHTML = `
-      <div style="padding:30px; direction:rtl; font-family:Arial;">
-        <div style="max-width:750px; margin:auto; border:2px solid #0f766e; border-radius:18px; padding:25px;">
-          <h1 style="text-align:center; color:#0f766e;">${settings.storeName}</h1>
-          <h2 style="text-align:center;">فاتورة بيع</h2>
+          .invoice {
+            max-width: 780px;
+            margin: auto;
+            border: 2px solid #0f766e;
+            border-radius: 20px;
+            padding: 28px;
+          }
 
-          <p><strong>رقم الفاتورة:</strong> ${inv.id}</p>
-          <p><strong>التاريخ:</strong> ${inv.date}</p>
-          <p><strong>الهاتف / واتساب:</strong> ${settings.whatsapp}</p>
+          h1 {
+            color: #0f766e;
+            text-align: center;
+            margin-bottom: 5px;
+          }
 
-          <table style="width:100%; border-collapse:collapse; margin-top:20px;">
+          h2 {
+            text-align: center;
+            margin-top: 0;
+          }
+
+          .info {
+            background: #ecfdf5;
+            padding: 14px;
+            border-radius: 14px;
+            margin: 18px 0;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+          }
+
+          th, td {
+            border: 1px solid #d1d5db;
+            padding: 10px;
+            text-align: center;
+          }
+
+          th {
+            background: #0f766e;
+            color: white;
+          }
+
+          .total {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0f766e;
+          }
+
+          .thanks {
+            text-align: center;
+            margin-top: 35px;
+            color: #64748b;
+          }
+        </style>
+      </head>
+
+      <body>
+        <div class="invoice">
+          <h1>${escapeHtml(settings.storeName)}</h1>
+          <h2>فاتورة بيع</h2>
+
+          <div class="info">
+            <p><strong>رقم الفاتورة:</strong> ${Number(inv.id)}</p>
+            <p><strong>التاريخ:</strong> ${escapeHtml(inv.date)}</p>
+            <p><strong>واتساب:</strong> ${escapeHtml(settings.whatsapp)}</p>
+          </div>
+
+          <table>
             <thead>
               <tr>
-                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">المنتج</th>
-                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">الكمية</th>
-                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">السعر</th>
-                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">المجموع</th>
+                <th>المنتج</th>
+                <th>الكمية</th>
+                <th>السعر</th>
+                <th>المجموع</th>
               </tr>
             </thead>
             <tbody>
-              ${inv.items.map(item => `
-                <tr>
-                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.name}</td>
-                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.qty}</td>
-                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.price} MRU</td>
-                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.price * item.qty} MRU</td>
-                </tr>
-              `).join("")}
+              ${rows}
             </tbody>
           </table>
 
-          <h2 style="text-align:left; color:#0f766e;">المجموع: ${inv.total} MRU</h2>
+          <div class="total">المجموع: ${Number(inv.total)} MRU</div>
 
-          <p style="text-align:center; margin-top:35px; color:#555;">
-            شكرا لتعاملكم معنا
-          </p>
+          <div class="thanks">شكرا لتعاملكم معنا</div>
         </div>
-      </div>
+
+        <script>
+          window.onload = function () {
+            window.print();
+          };
+        <\/script>
+      </body>
+      </html>
     `;
 
-    window.print();
-
-    setTimeout(() => {
-      printArea.classList.add("hidden");
-      printArea.innerHTML = "";
-    }, 1000);
+    const win = window.open("", "_blank");
+    win.document.write(html);
+    win.document.close();
   }
 
   function deleteInvoice(id) {
     if (!confirm("هل تريد حذف الفاتورة؟")) return;
 
     let invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
-    invoices = invoices.filter(i => i.id !== id);
+    invoices = invoices.filter(i => Number(i.id) !== Number(id));
     localStorage.setItem("invoices", JSON.stringify(invoices));
 
     renderInvoices();
   }
 
-  function loadSettingsForm() {
+  function loadSettings() {
     const settings = getSettings();
-
     document.getElementById("storeNameInput").value = settings.storeName;
     document.getElementById("whatsappInput").value = settings.whatsapp;
   }
@@ -1080,20 +1165,20 @@
       whatsapp
     }));
 
-    document.querySelector(".logo").innerText = "📚 " + storeName;
+    document.getElementById("logoText").innerText = "📚 " + storeName;
     alert("تم حفظ الإعدادات");
   }
 
   function init() {
     const settings = getSettings();
-    document.querySelector(".logo").innerText = "📚 " + settings.storeName;
+    document.getElementById("logoText").innerText = "📚 " + settings.storeName;
 
     renderCategories();
     renderProducts();
     renderCart();
 
     if (localStorage.getItem("adminLogged") === "yes") {
-      showAdminContent();
+      showAdmin();
     }
   }
 
