@@ -1,52 +1,1104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>متجر وراقة إلكتروني</title>
-<style>
-:root{--p:#11423f;--p2:#176b65;--a:#f59e0b;--bg:#f5f7fb;--card:#fff;--t:#14201f;--m:#64748b;--l:#e5e7eb;--r:22px;--sh:0 14px 38px #0f3f3d22;--red:#dc2626;--green:#16a34a;--blue:#2563eb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:Tahoma,Arial,sans-serif}button,input,select,textarea{font-family:inherit}button{cursor:pointer}.wrap{width:min(1180px,94%);margin:auto}.top{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;padding:8px 0;font-size:14px}.top .wrap,.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.head{position:sticky;top:0;background:#ffffffe8;backdrop-filter:blur(14px);z-index:30;border-bottom:1px solid var(--l)}.nav{height:74px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;color:var(--p)}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--a),#fde68a);display:grid;place-items:center;font-size:27px;box-shadow:var(--sh)}.links{display:flex;gap:8px;flex-wrap:wrap}.links a{padding:8px 12px;border-radius:14px;color:#334155;text-decoration:none}.links a:hover{background:#eaf7f6}.icon,.btn{border:0;border-radius:16px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}.icon{width:48px;height:48px;background:#eaf7f6;border:1px solid #d5edeb;color:var(--p);font-size:22px;position:relative}.icon:hover,.btn:hover{transform:translateY(-2px)}.badge{position:absolute;top:-7px;left:-7px;background:var(--red);color:#fff;border-radius:50%;font-size:12px;width:23px;height:23px;display:grid;place-items:center;border:2px solid #fff}.btn{padding:11px 16px}.primary{background:linear-gradient(135deg,var(--p2),var(--p));color:#fff}.accent{background:var(--a);color:#1f2937}.ghost{background:#fff;border:1px solid var(--l);color:var(--p)}.danger{background:#fee2e2;color:#991b1b}.ok{background:#dcfce7;color:#166534}.hero{padding:30px 0;background:radial-gradient(circle at top left,#fff1c7 0,#f5f7fb 35%,#eaf7f6 100%)}.heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.heroCard,.stat,.card,.panel{background:#fff;border:1px solid var(--l);border-radius:var(--r);box-shadow:var(--sh)}.heroCard{padding:30px;background:linear-gradient(135deg,#fff,#effafa)}h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin:0 0 10px;color:var(--p)}p{line-height:1.7}.muted{color:var(--m)}.heroBtns{display:flex;gap:9px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.stat{padding:20px}.stat b{font-size:28px;color:var(--p);display:block}.section{padding:30px 0}.title{display:flex;align-items:end;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.title h2{margin:0;color:var(--p);font-size:28px}.services{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.card{padding:17px}.card .e{font-size:34px}.card h3{margin:8px 0 5px}.cats{display:flex;gap:9px;overflow:auto;padding-bottom:8px}.cat{border:1px solid var(--l);background:#fff;border-radius:999px;padding:10px 14px;white-space:nowrap;font-weight:900;color:#334155}.cat.active{background:linear-gradient(135deg,var(--p2),var(--p));color:#fff;border:0}.filters{display:grid;grid-template-columns:1fr 220px 170px;gap:10px}.field{display:flex;flex-direction:column;gap:6px}label{font-weight:900;color:#334155;font-size:13px}input,select,textarea{border:1px solid var(--l);border-radius:15px;padding:12px;background:#fff;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--p2);box-shadow:0 0 0 4px #176b6517}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.prod{background:#fff;border:1px solid var(--l);border-radius:24px;overflow:hidden;box-shadow:0 10px 28px #0000000c;display:flex;flex-direction:column}.pic{height:160px;background:linear-gradient(135deg,#eaf7f6,#fff7db);display:grid;place-items:center;position:relative;font-size:54px;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}.stock{position:absolute;top:10px;right:10px;background:#fff;border:1px solid var(--l);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900}.stock.low{background:#fff7ed;color:#c2410c}.stock.out{background:#fee2e2;color:#991b1b}.body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}.body h3{margin:0;font-size:18px}.price{font-size:20px;font-weight:900;color:var(--p)}.add{display:flex;gap:8px;margin-top:auto}.add input{width:74px;text-align:center}.add button{flex:1}.empty{text-align:center;border:1px dashed #cbd5e1;background:#fff;border-radius:22px;padding:30px;color:var(--m)}.drawer,.modal{position:fixed;inset:0;z-index:80;display:none}.drawer.on,.modal.on{display:block}.overlay{position:absolute;inset:0;background:#0f172a77;backdrop-filter:blur(3px)}.drawerPanel{position:absolute;top:0;left:0;width:min(440px,96vw);height:100%;background:#fff;display:flex;flex-direction:column;box-shadow:-20px 0 45px #0004}.mcard{position:relative;background:#fff;border-radius:25px;box-shadow:0 30px 80px #0005;width:min(1040px,96vw);max-height:92vh;overflow:auto;margin:4vh auto;border:1px solid var(--l)}.mhead,.dhead{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--l);background:#fff;position:sticky;top:0;z-index:2}.mhead h2,.dhead h2{margin:0}.close{width:38px;height:38px;border:0;border-radius:13px;background:#f1f5f9;font-size:22px}.mbody,.dbody{padding:16px}.dbody{overflow:auto;flex:1}.dfoot{padding:16px;border-top:1px solid var(--l);background:#fafafa}.ci{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;border:1px solid var(--l);border-radius:18px;padding:9px;margin-bottom:9px}.thumb{width:58px;height:58px;border-radius:14px;background:#eaf7f6;display:grid;place-items:center;overflow:hidden;font-size:25px}.thumb img{width:100%;height:100%;object-fit:cover}.ci h4{margin:0}.ci p{margin:2px 0;color:var(--m);font-size:13px}.round{width:29px;height:29px;border:1px solid var(--l);border-radius:10px;background:#fff;font-weight:900}.tot{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin-bottom:12px}.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.full{grid-column:1/-1}.admin{display:grid;grid-template-columns:280px 1fr;gap:14px}.tabs{display:flex;flex-direction:column;gap:8px}.tab{border:1px solid var(--l);background:#fff;border-radius:15px;padding:12px;text-align:right;font-weight:900}.tab.active{background:var(--p);color:#fff}.pane{display:none}.pane.active{display:block}.adminStats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.adminStats .stat{box-shadow:none}.tableWrap{overflow:auto;border:1px solid var(--l);border-radius:18px;background:#fff}table{width:100%;border-collapse:collapse;min-width:720px}td,th{padding:11px;border-bottom:1px solid var(--l);text-align:right;font-size:14px}th{background:#f8fafc}.mini{padding:8px 10px;border-radius:11px;border:0;font-weight:900;margin:2px}.invoice{width:210mm;min-height:297mm;margin:auto;background:#fff;padding:16mm;border:1px solid #e5e7eb;box-shadow:0 18px 45px #0002}.invTop{display:flex;justify-content:space-between;gap:15px;border-bottom:4px solid var(--p);padding-bottom:14px;margin-bottom:16px}.invBrand{display:flex;gap:12px;align-items:center}.invLogo{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,var(--a),#fde68a);display:grid;place-items:center;font-size:32px}.invBrand h1{font-size:27px;margin:0}.invMeta{text-align:left}.invMeta h2{font-size:32px;margin:0 0 7px;color:var(--p)}.boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}.box{border:1px solid #e5e7eb;background:#fafafa;border-radius:14px;padding:12px}.box h3{margin:0 0 7px;color:var(--p)}.invTable{min-width:auto;border:1px solid #d1d5db}.invTable th{background:var(--p);color:#fff}.center{text-align:center}.summary{width:min(360px,100%);margin:17px 0 0 auto;border:1px solid #e5e7eb;border-radius:15px;overflow:hidden}.sum{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #e5e7eb}.sum.total{background:var(--p);color:#fff;font-weight:900;font-size:20px}.invFoot{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.thanks{background:#fff7db;border:1px solid #fde68a;border-radius:16px;padding:14px}.stamp{border:2px dashed #94a3b8;border-radius:16px;padding:20px;text-align:center;color:#64748b}.toast{position:fixed;bottom:18px;right:18px;background:var(--p);color:#fff;padding:12px 16px;border-radius:16px;box-shadow:var(--sh);display:none;z-index:200}.toast.on{display:block}@media(max-width:980px){.heroGrid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.filters,.admin{grid-template-columns:1fr}.adminStats{grid-template-columns:repeat(2,1fr)}.links{display:none}.invoice{width:100%;min-height:auto;padding:18px}.boxes,.invFoot{grid-template-columns:1fr}.invTop{flex-direction:column}.invMeta{text-align:right}}@media(max-width:560px){.services,.grid,.stats,.form,.adminStats{grid-template-columns:1fr}.full{grid-column:auto}.ci{grid-template-columns:52px 1fr}.ci strong{grid-column:1/-1}.drawerPanel{width:100%}}@media print{body *{visibility:hidden!important}#printArea,#printArea *{visibility:visible!important}#printArea{position:absolute;inset:0;margin:0;background:#fff}.invoice{width:210mm!important;min-height:297mm!important;margin:0!important;padding:14mm!important;box-shadow:none!important;border:0!important}.noPrint{display:none!important}@page{size:A4;margin:0}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوراقة الإلكترونية</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f7f8;
+      color: #123;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f766e, #115e59);
+      color: white;
+      padding: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-light {
+      background: white;
+      color: #0f766e;
+    }
+
+    .btn-main {
+      background: #0f766e;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    .btn-warning {
+      background: #f59e0b;
+      color: white;
+    }
+
+    .hero {
+      background: white;
+      padding: 28px 15px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      color: #0f766e;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #555;
+      margin-top: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .search-box input,
+    .search-box select {
+      flex: 1;
+      min-width: 160px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .cat-btn {
+      background: white;
+      color: #0f766e;
+      border: 1px solid #0f766e;
+      white-space: nowrap;
+    }
+
+    .cat-btn.active {
+      background: #0f766e;
+      color: white;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 18px;
+      padding: 15px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      text-align: center;
+      position: relative;
+    }
+
+    .product-img {
+      width: 95px;
+      height: 95px;
+      margin: auto;
+      border-radius: 18px;
+      background: #e0f2f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 46px;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-card h3 {
+      margin: 12px 0 6px;
+      font-size: 16px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #0f766e;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #f59e0b;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    .cart-panel,
+    .admin-panel {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 380px;
+      max-width: 95%;
+      height: 100%;
+      background: white;
+      z-index: 999;
+      transition: 0.3s;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.25);
+      padding: 18px;
+      overflow-y: auto;
+    }
+
+    .cart-panel.open,
+    .admin-panel.open {
+      left: 0;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .close-btn {
+      background: #eee;
+      color: #333;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+      align-items: center;
+    }
+
+    .qty-box {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .qty-box button {
+      padding: 5px 9px;
+      border-radius: 8px;
+      background: #e0f2f1;
+      color: #0f766e;
+    }
+
+    .total-box {
+      background: #e0f2f1;
+      padding: 15px;
+      border-radius: 15px;
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .admin-login,
+    .admin-content {
+      background: #f8fafc;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px;
+      margin: 7px 0;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .admin-tabs button {
+      background: #e0f2f1;
+      color: #0f766e;
+      flex: 1;
+      min-width: 95px;
+    }
+
+    .admin-tabs button.active {
+      background: #0f766e;
+      color: white;
+    }
+
+    .admin-product,
+    .invoice-card {
+      background: white;
+      padding: 12px;
+      border-radius: 14px;
+      margin: 10px 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #0f766e;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .empty {
+      text-align: center;
+      color: #777;
+      padding: 25px;
+      background: white;
+      border-radius: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      #printArea,
+      #printArea * {
+        visibility: visible;
+      }
+
+      #printArea {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        background: white;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-card {
+        padding: 10px;
+      }
+
+      .product-img {
+        width: 75px;
+        height: 75px;
+        font-size: 36px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      button {
+        padding: 9px 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="top"><div class="wrap"><span>📄 متجر وراقة يحسب المنتجات والكميات والفواتير</span><span>📲 واتساب: <b id="phoneTop">00000000</b></span></div></div>
-<header class="head"><div class="wrap nav"><div class="brand"><span class="logo">📚</span><span id="shopTitle">وراقة المدينة</span></div><div class="links"><a href="#cats">الأقسام</a><a href="#products">المنتجات</a><a href="#services">الخدمات</a><a href="#offers">العروض</a></div><div><button class="icon" title="لوحة التحكم" onclick="openAdmin()">⚙️</button> <button class="icon" title="السلة" onclick="openCart()">🛒<span class="badge" id="cartCount">0</span></button></div></div></header>
-<main>
-<section class="hero"><div class="wrap heroGrid"><div class="heroCard"><h1>متجر وراقة كامل مع لوحة تحكم وفاتورة طباعة</h1><p class="muted">تمت إضافة منتجات جميلة وجاهزة للوراقة، ويمكنك إضافة منتجات جديدة أو تعديل الأسعار والكميات من لوحة التحكم فقط. عند البيع يتم إنشاء فاتورة جميلة وخصم الكمية من المخزون تلقائياً.</p><div class="heroBtns"><a class="btn primary" href="#products">عرض المنتجات</a><button class="btn accent" onclick="openAdmin()">⚙️ لوحة التحكم</button><button class="btn ghost" onclick="openCart()">🧾 إنشاء فاتورة</button></div></div><div class="stats"><div class="stat"><b id="sProducts">0</b><span class="muted">منتج</span></div><div class="stat"><b id="sStock">0</b><span class="muted">كمية بالمخزون</span></div><div class="stat"><b id="sCats">0</b><span class="muted">قسم</span></div><div class="stat"><b id="sInv">0</b><span class="muted">فاتورة</span></div></div></div></section>
-<section class="section" id="services"><div class="wrap"><div class="title"><div><h2>خدمات الوراقة</h2><p class="muted">أقسام كثيرة جاهزة للمنتجات والخدمات.</p></div></div><div class="services"><div class="card"><div class="e">🖨️</div><h3>طباعة وتصوير</h3><p class="muted">طباعة، نسخ، PDF، سكانير.</p></div><div class="card"><div class="e">🎒</div><h3>مدرسية</h3><p class="muted">دفاتر، أقلام، مساطر ومحافظ.</p></div><div class="card"><div class="e">📎</div><h3>مكتبية</h3><p class="muted">ملفات، مشابك، أظرفة.</p></div><div class="card"><div class="e">🎨</div><h3>رسم وفنون</h3><p class="muted">ألوان وورق رسم وفرش.</p></div><div class="card"><div class="e">🎁</div><h3>هدايا وتغليف</h3><p class="muted">بطاقات وأكياس وتغليف.</p></div></div></div></section>
-<section class="section" id="cats"><div class="wrap"><div class="title"><div><h2>الأقسام</h2><p class="muted">اضغط على أي قسم لعرض منتجاته.</p></div></div><div class="cats" id="catList"></div></div></section>
-<section class="section" id="products"><div class="wrap"><div class="title"><div><h2>المنتجات</h2><p class="muted">لا توجد منتجات جاهزة في هذه الصفحة. المنتجات تظهر فقط بعد إضافتها من لوحة التحكم.</p></div></div><div class="panel" style="padding:14px"><div class="filters"><div class="field"><label>بحث</label><input id="q" placeholder="دفتر، قلم، طباعة..." oninput="q=this.value;renderProducts()"></div><div class="field"><label>الترتيب</label><select id="sort" onchange="sort=this.value;renderProducts()"><option value="new">الأحدث</option><option value="cheap">الأرخص</option><option value="exp">الأغلى</option><option value="low">الأقل كمية</option></select></div><div class="field"><label>المخزون</label><select id="stockF" onchange="stockF=this.value;renderProducts()"><option value="all">الكل</option><option value="yes">المتوفر</option><option value="low">كمية قليلة</option><option value="out">نفدت</option></select></div></div></div><br><div class="grid" id="prodGrid"></div></div></section>
-<section class="section" id="offers"><div class="wrap"><div class="panel" style="padding:22px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff"><h2 style="margin:0">🔥 عروض للمدارس والمكاتب</h2><p>استخدم السلة لإنشاء طلبية كاملة وفاتورة منظمة للطباعة.</p><button class="btn accent" onclick="openCart()">عرض السلة</button></div></div></section>
+
+<header>
+  <div class="topbar">
+    <div class="logo">📚 الوراقة الإلكترونية</div>
+
+    <div class="header-buttons">
+      <button class="btn-light" onclick="openCart()">🛒 السلة <span id="cartCount">0</span></button>
+      <button class="btn-light" onclick="openAdmin()">⚙️ لوحة التحكم</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>مرحبا بكم في الوراقة الإلكترونية</h1>
+  <p>منتجات مدرسية، مكتبية، طباعة، نسخ، أدوات وملحقات بأسعار مناسبة</p>
+</section>
+
+<main class="container">
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="ابحث عن منتج..." oninput="renderProducts()" />
+    <select id="sortSelect" onchange="renderProducts()">
+      <option value="">ترتيب المنتجات</option>
+      <option value="low">السعر من الأقل</option>
+      <option value="high">السعر من الأعلى</option>
+      <option value="name">حسب الاسم</option>
+    </select>
+  </div>
+
+  <div class="categories" id="categoriesBox"></div>
+
+  <section class="products" id="productsBox"></section>
+
 </main>
-<div class="drawer" id="cart"><div class="overlay" onclick="closeCart()"></div><aside class="drawerPanel"><div class="dhead"><h2>🛒 السلة</h2><button class="close" onclick="closeCart()">×</button></div><div class="dbody" id="cartItems"></div><div class="dfoot"><div class="tot"><span>المجموع</span><span id="cartTotal">0 MRU</span></div><button class="btn primary" style="width:100%" onclick="openCheckout()">إكمال الطلب والفاتورة</button></div></aside></div>
-<div class="modal" id="checkout"><div class="overlay" onclick="closeModal('checkout')"></div><div class="mcard"><div class="mhead"><h2>بيانات الفاتورة</h2><button class="close" onclick="closeModal('checkout')">×</button></div><div class="mbody"><div class="form"><div class="field"><label>اسم الزبون</label><input id="cName" placeholder="اسم الزبون"></div><div class="field"><label>رقم الهاتف</label><input id="cPhone" placeholder="رقم واتساب"></div><div class="field full"><label>العنوان</label><input id="cAddr" placeholder="العنوان أو مكان التسليم"></div><div class="field"><label>تخفيض MRU</label><input id="disc" type="number" min="0" value="0"></div><div class="field"><label>توصيل MRU</label><input id="deliv" type="number" min="0" value="0"></div><div class="field full"><label>ملاحظات</label><textarea id="notes" rows="3"></textarea></div></div><br><button class="btn primary" onclick="saveInvoice()">✅ حفظ الفاتورة وخصم الكمية</button> <button class="btn accent" onclick="previewInvoice()">👁️ معاينة قبل الحفظ</button></div></div></div>
-<div class="modal" id="invoiceM"><div class="overlay"></div><div class="mcard" style="width:min(1120px,98vw)"><div class="mhead noPrint"><h2>الفاتورة</h2><button class="close" onclick="closeModal('invoiceM')">×</button></div><div class="mbody"><div class="noPrint" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px"><button class="btn primary" onclick="window.print()">🖨️ طباعة الفاتورة</button><button class="btn accent" onclick="sendWA()">📲 إرسال واتساب</button><button class="btn ghost" onclick="closeModal('invoiceM')">إغلاق</button></div><div id="printArea"></div></div></div></div>
-<div class="modal" id="adminM"><div class="overlay" onclick="closeModal('adminM')"></div><div class="mcard"><div class="mhead"><h2>⚙️ لوحة التحكم</h2><button class="close" onclick="closeModal('adminM')">×</button></div><div class="mbody" id="adminBody"></div></div></div>
-<div class="toast" id="toast"></div>
+
+<!-- السلة للزبون فقط بدون فاتورة -->
+<aside class="cart-panel" id="cartPanel">
+  <div class="panel-head">
+    <h2>🛒 السلة</h2>
+    <button class="close-btn" onclick="closeCart()">×</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="total-box">
+    <span>المجموع:</span>
+    <span id="cartTotal">0 MRU</span>
+  </div>
+
+  <button class="btn-main" style="width:100%; margin-top:12px;" onclick="sendOrder()">
+    إرسال الطلب عبر واتساب
+  </button>
+
+  <button class="btn-danger" style="width:100%; margin-top:8px;" onclick="clearCart()">
+    حذف السلة
+  </button>
+</aside>
+
+<!-- لوحة التحكم -->
+<aside class="admin-panel" id="adminPanel">
+  <div class="panel-head">
+    <h2>⚙️ لوحة التحكم</h2>
+    <button class="close-btn" onclick="closeAdmin()">×</button>
+  </div>
+
+  <div id="adminLogin" class="admin-login">
+    <h3>تسجيل دخول المدير</h3>
+    <input type="email" id="adminEmail" placeholder="إيميل المدير" />
+    <input type="password" id="adminCode" placeholder="كود المدير" />
+    <button class="btn-main" style="width:100%;" onclick="adminLogin()">دخول</button>
+    <p style="font-size:12px;color:#777;">الإيميل: Aichetou@gmail.com | الكود: 12345</p>
+  </div>
+
+  <div id="adminContent" class="admin-content hidden">
+
+    <div class="admin-tabs">
+      <button id="tabProducts" class="active" onclick="showAdminTab('products')">📦 المنتجات</button>
+      <button id="tabInvoices" onclick="showAdminTab('invoices')">🧾 الفواتير</button>
+      <button id="tabSettings" onclick="showAdminTab('settings')">⚙️ الإعدادات</button>
+    </div>
+
+    <!-- قسم المنتجات -->
+    <div id="adminProductsBox">
+
+      <h3 id="formTitle">إضافة منتج</h3>
+
+      <input type="hidden" id="editProductId" />
+
+      <input type="text" id="productName" placeholder="اسم المنتج" />
+
+      <select id="productCategory">
+        <option value="دفاتر وكراسات">دفاتر وكراسات</option>
+        <option value="أقلام وكتابة">أقلام وكتابة</option>
+        <option value="طباعة وتصوير">طباعة وتصوير</option>
+        <option value="لوازم مدرسية">لوازم مدرسية</option>
+        <option value="أوراق وملفات">أوراق وملفات</option>
+        <option value="هدايا وتغليف">هدايا وتغليف</option>
+        <option value="إكسسوارات مكتبية">إكسسوارات مكتبية</option>
+      </select>
+
+      <input type="number" id="productPrice" placeholder="السعر MRU" />
+
+      <input type="text" id="productIcon" placeholder="أيقونة أو رابط صورة مثال: 📘 أو https://..." />
+
+      <textarea id="productDesc" placeholder="وصف المنتج"></textarea>
+
+      <button class="btn-main" style="width:100%;" onclick="saveProduct()">حفظ المنتج</button>
+
+      <button class="btn-warning hidden" id="cancelEditBtn" style="width:100%; margin-top:8px;" onclick="cancelEdit()">
+        إلغاء التعديل
+      </button>
+
+      <h3>قائمة المنتجات</h3>
+      <div id="adminProductsList"></div>
+    </div>
+
+    <!-- قسم الفواتير داخل لوحة التحكم فقط -->
+    <div id="adminInvoicesBox" class="hidden">
+      <h3>🧾 الفواتير</h3>
+      <div id="invoicesList"></div>
+    </div>
+
+    <!-- الإعدادات -->
+    <div id="adminSettingsBox" class="hidden">
+      <h3>إعدادات المتجر</h3>
+      <input type="text" id="storeNameInput" placeholder="اسم المتجر" />
+      <input type="text" id="whatsappInput" placeholder="رقم واتساب مثال: 41835226" />
+      <button class="btn-main" style="width:100%;" onclick="saveSettings()">حفظ الإعدادات</button>
+
+      <button class="btn-danger" style="width:100%; margin-top:15px;" onclick="logoutAdmin()">
+        خروج من لوحة التحكم
+      </button>
+    </div>
+
+  </div>
+</aside>
+
+<div id="printArea" class="hidden"></div>
+
+<footer>
+  جميع الحقوق محفوظة © الوراقة الإلكترونية
+</footer>
+
 <script>
-const cats=[['all','كل الأقسام','🛍️'],['paper','أوراق ودفاتر','📚'],['pens','أقلام وكتابة','✏️'],['school','لوازم مدرسية','🎒'],['office','لوازم مكتبية','📎'],['printing','طباعة وتصوير','🖨️'],['files','ملفات وأظرفة','📁'],['art','رسم وفنون','🎨'],['books','كتب ومراجع','📖'],['gifts','هدايا وتغليف','🎁'],['tech','إكسسوارات تقنية','🔌'],['offers','عروض','🔥']];
-const seed=[{"id":"p001","name":"رزمة ورق A4 ممتاز","cat":"paper","price":450,"stock":60,"desc":"ورق أبيض ناعم للطباعة والتصوير، مناسب للمكاتب والطلاب.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DBEAFE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%84%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%88%D8%B1%D9%82%20A4%3C/text%3E%0A%3C/svg%3E","time":1781721121796},{"id":"p002","name":"دفتر 200 صفحة غلاف قوي","cat":"paper","price":180,"stock":80,"desc":"دفتر كبير للمدرسة والجامعة مع ورق جيد وغلاف أنيق.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E0E7FF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FAFAFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%98%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AF%D9%81%D8%AA%D8%B1%20%D9%83%D8%A8%D9%8A%D8%B1%3C/text%3E%0A%3C/svg%3E","time":1781721120796},{"id":"p003","name":"دفتر صغير للجيب","cat":"paper","price":60,"stock":120,"desc":"دفتر ملاحظات صغير وخفيف مناسب للطلبات اليومية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DCFCE7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%9D%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AF%D9%81%D8%AA%D8%B1%20%D8%AC%D9%8A%D8%A8%3C/text%3E%0A%3C/svg%3E","time":1781721119796},{"id":"p004","name":"ورق ملون للأعمال اليدوية","cat":"paper","price":220,"stock":35,"desc":"مجموعة أوراق ملونة للمدرسة والرسم والتغليف.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FCE7F3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%8C%88%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%88%D8%B1%D9%82%20%D9%85%D9%84%D9%88%D9%86%3C/text%3E%0A%3C/svg%3E","time":1781721118796},{"id":"p005","name":"قلم أزرق جودة عالية","cat":"pens","price":20,"stock":300,"desc":"قلم كتابة ناعم للمدرسة والمكتب والاستخدام اليومي.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DBEAFE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%8A%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%82%D9%84%D9%85%20%D8%A3%D8%B2%D8%B1%D9%82%3C/text%3E%0A%3C/svg%3E","time":1781721117796},{"id":"p006","name":"قلم أسود رسمي","cat":"pens","price":20,"stock":260,"desc":"قلم أسود للوثائق والتوقيع والكتابة الواضحة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E5E7EB%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%E2%9C%92%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%82%D9%84%D9%85%20%D8%A3%D8%B3%D9%88%D8%AF%3C/text%3E%0A%3C/svg%3E","time":1781721116796},{"id":"p007","name":"قلم رصاص HB","cat":"pens","price":15,"stock":250,"desc":"قلم رصاص مناسب للرسم والكتابة والامتحانات.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF3C7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%E2%9C%8F%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%82%D9%84%D9%85%20%D8%B1%D8%B5%D8%A7%D8%B5%3C/text%3E%0A%3C/svg%3E","time":1781721115796},{"id":"p008","name":"علبة أقلام ألوان 12 لون","cat":"pens","price":280,"stock":45,"desc":"ألوان خشبية جميلة للأطفال والرسم المدرسي.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FFE4E6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%8D%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%A3%D9%84%D9%88%D8%A7%D9%86%2012%3C/text%3E%0A%3C/svg%3E","time":1781721114796},{"id":"p009","name":"ماركر تحديد 4 ألوان","cat":"pens","price":300,"stock":38,"desc":"أقلام تحديد للنصوص والمراجعة بألوان واضحة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23ECFCCB%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%8C%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%85%D8%A7%D8%B1%D9%83%D8%B1%3C/text%3E%0A%3C/svg%3E","time":1781721113796},{"id":"p010","name":"حقيبة مدرسية أنيقة","cat":"school","price":1500,"stock":20,"desc":"حقيبة متينة وخفيفة بتصميم جميل للمدرسة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEE2E2%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%8E%92%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AD%D9%82%D9%8A%D8%A8%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721112796},{"id":"p011","name":"ممحاة ومبراة طقم","cat":"school","price":80,"stock":150,"desc":"طقم صغير ضروري لكل تلميذ: ممحاة ومبراة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FDE68A%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%A7%BD%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B7%D9%82%D9%85%20%D8%A3%D8%AF%D9%88%D8%A7%D8%AA%3C/text%3E%0A%3C/svg%3E","time":1781721111796},{"id":"p012","name":"علبة هندسة كاملة","cat":"school","price":350,"stock":55,"desc":"مسطرة ومنقلة ومثلثات داخل علبة مرتبة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23CCFBF1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%90%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%87%D9%86%D8%AF%D8%B3%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721110796},{"id":"p013","name":"لوح كتابة صغير للأطفال","cat":"school","price":600,"stock":18,"desc":"لوح خفيف للتدريب والكتابة في المنزل والمدرسة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E0F2FE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%94%A4%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%84%D9%88%D8%AD%20%D9%83%D8%AA%D8%A7%D8%A8%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721109796},{"id":"p014","name":"دباسة مكتبية قوية","cat":"office","price":420,"stock":30,"desc":"دباسة عملية للمكاتب والمدارس مع شكل أنيق.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E2E8F0%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%8E%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AF%D8%A8%D8%A7%D8%B3%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721108796},{"id":"p015","name":"علبة مشابك ورق","cat":"office","price":120,"stock":90,"desc":"مشابك ورقية لتنظيم الملفات والأوراق.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23F1F5F9%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%A7%B7%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%85%D8%B4%D8%A7%D8%A8%D9%83%3C/text%3E%0A%3C/svg%3E","time":1781721107796},{"id":"p016","name":"لاصق شفاف كبير","cat":"office","price":160,"stock":70,"desc":"لاصق قوي للتغليف والاستعمال المكتبي.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF3C7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%A6%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%84%D8%A7%D8%B5%D9%82%3C/text%3E%0A%3C/svg%3E","time":1781721106796},{"id":"p017","name":"دفتر فواتير ومحاسبة","cat":"office","price":500,"stock":25,"desc":"دفتر مناسب لتسجيل المبيعات والفواتير اليومية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DCFCE7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%92%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%85%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721105796},{"id":"p018","name":"طباعة A4 أبيض وأسود","cat":"printing","price":10,"stock":1000,"desc":"خدمة طباعة سريعة للوثائق والملفات الدراسية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E0F2FE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%A8%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9%20B/W%3C/text%3E%0A%3C/svg%3E","time":1781721104796},{"id":"p019","name":"طباعة A4 ملونة","cat":"printing","price":40,"stock":500,"desc":"طباعة ملونة واضحة للصور والعروض المدرسية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FCE7F3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%A8%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B7%D8%A8%D8%A7%D8%B9%D8%A9%20%D9%85%D9%84%D9%88%D9%86%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721103796},{"id":"p020","name":"تصوير وثائق","cat":"printing","price":10,"stock":900,"desc":"نسخ وتصوير أوراق ووثائق بجودة واضحة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23EDE9FE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%A0%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AA%D8%B5%D9%88%D9%8A%D8%B1%3C/text%3E%0A%3C/svg%3E","time":1781721102796},{"id":"p021","name":"تغليف حراري A4","cat":"printing","price":120,"stock":120,"desc":"تغليف حراري لحماية البطاقات والشهادات والوثائق.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF9C3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%AA%AA%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AA%D8%BA%D9%84%D9%8A%D9%81%3C/text%3E%0A%3C/svg%3E","time":1781721101796},{"id":"p022","name":"ملف بلاستيك شفاف","cat":"files","price":80,"stock":110,"desc":"ملف شفاف لحفظ الأوراق والوثائق المهمة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DBEAFE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%81%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%85%D9%84%D9%81%20%D8%B4%D9%81%D8%A7%D9%81%3C/text%3E%0A%3C/svg%3E","time":1781721100796},{"id":"p023","name":"كلاسير حلقات كبير","cat":"files","price":650,"stock":24,"desc":"كلاسير قوي لترتيب الدروس والفواتير والمستندات.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E0E7FF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%97%82%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%83%D9%84%D8%A7%D8%B3%D9%8A%D8%B1%3C/text%3E%0A%3C/svg%3E","time":1781721099796},{"id":"p024","name":"أظرفة رسائل 20 قطعة","cat":"files","price":250,"stock":45,"desc":"أظرفة بيضاء للرسائل والوثائق الرسمية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23F8FAFC%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%E2%9C%89%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%A3%D8%B8%D8%B1%D9%81%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721098796},{"id":"p025","name":"حامل ملفات مكتبي","cat":"files","price":750,"stock":16,"desc":"حامل أنيق لتنظيم الملفات على المكتب.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23CCFBF1%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%97%83%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AD%D8%A7%D9%85%D9%84%20%D9%85%D9%84%D9%81%D8%A7%D8%AA%3C/text%3E%0A%3C/svg%3E","time":1781721097796},{"id":"p026","name":"ألوان مائية للأطفال","cat":"art","price":380,"stock":40,"desc":"ألوان مائية جميلة ومناسبة للمدرسة والهوايات.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FCE7F3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%8E%A8%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%A3%D9%84%D9%88%D8%A7%D9%86%20%D9%85%D8%A7%D8%A6%D9%8A%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721096796},{"id":"p027","name":"فرش رسم متنوعة","cat":"art","price":260,"stock":50,"desc":"مجموعة فرش بأحجام مختلفة للرسم والتلوين.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF3C7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%8C%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%81%D8%B1%D8%B4%20%D8%B1%D8%B3%D9%85%3C/text%3E%0A%3C/svg%3E","time":1781721095796},{"id":"p028","name":"كراسة رسم كبيرة","cat":"art","price":300,"stock":65,"desc":"كراسة رسم بورق جيد للأعمال الفنية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DCFCE7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%96%BC%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%83%D8%B1%D8%A7%D8%B3%D8%A9%20%D8%B1%D8%B3%D9%85%3C/text%3E%0A%3C/svg%3E","time":1781721094796},{"id":"p029","name":"صلصال ألوان للأطفال","cat":"art","price":320,"stock":35,"desc":"صلصال ملون آمن للأنشطة اليدوية للأطفال.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23EDE9FE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%A7%B8%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B5%D9%84%D8%B5%D8%A7%D9%84%3C/text%3E%0A%3C/svg%3E","time":1781721093796},{"id":"p030","name":"قاموس عربي فرنسي صغير","cat":"books","price":900,"stock":12,"desc":"قاموس عملي للطلاب والمراجعة اليومية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DBEAFE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%96%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%82%D8%A7%D9%85%D9%88%D8%B3%3C/text%3E%0A%3C/svg%3E","time":1781721092796},{"id":"p031","name":"كراس خط عربي","cat":"books","price":150,"stock":70,"desc":"كراس لتعليم وتحسين الخط العربي للأطفال.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF3C7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%E2%9C%8D%EF%B8%8F%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AE%D8%B7%20%D8%B9%D8%B1%D8%A8%D9%8A%3C/text%3E%0A%3C/svg%3E","time":1781721091796},{"id":"p032","name":"كتاب قصص أطفال","cat":"books","price":500,"stock":20,"desc":"قصص قصيرة ومفيدة للأطفال بتصميم جذاب.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEE2E2%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%93%9A%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D9%82%D8%B5%D8%B5%3C/text%3E%0A%3C/svg%3E","time":1781721090796},{"id":"p033","name":"ورق تغليف هدايا فاخر","cat":"gifts","price":250,"stock":45,"desc":"ورق تغليف أنيق للهدايا والمناسبات.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FFE4E6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%8E%81%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%AA%D8%BA%D9%84%D9%8A%D9%81%20%D9%87%D8%AF%D8%A7%D9%8A%D8%A7%3C/text%3E%0A%3C/svg%3E","time":1781721089796},{"id":"p034","name":"بطاقة تهنئة جميلة","cat":"gifts","price":100,"stock":85,"desc":"بطاقات تهنئة للمناسبات مع تصميم لطيف.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FCE7F3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%92%8C%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%A8%D8%B7%D8%A7%D9%82%D8%A9%3C/text%3E%0A%3C/svg%3E","time":1781721088796},{"id":"p035","name":"شريط هدايا لامع","cat":"gifts","price":150,"stock":60,"desc":"شريط جميل لتزيين الهدايا والعلب.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF3C7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%8E%80%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B4%D8%B1%D9%8A%D8%B7%3C/text%3E%0A%3C/svg%3E","time":1781721087796},{"id":"p036","name":"فلاشة USB 32GB","cat":"tech","price":2200,"stock":15,"desc":"ذاكرة USB لحفظ الملفات والدروس والصور.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E0F2FE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%92%BE%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3EUSB%2032GB%3C/text%3E%0A%3C/svg%3E","time":1781721086796},{"id":"p037","name":"كابل شحن Type-C","cat":"tech","price":700,"stock":35,"desc":"كابل شحن سريع ومتين للهواتف الحديثة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23E2E8F0%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%94%8C%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3EType-C%3C/text%3E%0A%3C/svg%3E","time":1781721085796},{"id":"p038","name":"سماعات أذن بسيطة","cat":"tech","price":900,"stock":22,"desc":"سماعات عملية للدراسة والمكالمات اليومية.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23EDE9FE%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%8E%A7%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B3%D9%85%D8%A7%D8%B9%D8%A7%D8%AA%3C/text%3E%0A%3C/svg%3E","time":1781721084796},{"id":"p039","name":"عرض العودة للمدرسة","cat":"offers","price":2500,"stock":12,"desc":"باقة مدرسية: دفتر، أقلام، ممحاة، مبراة، مسطرة وألوان.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23FEF3C7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%94%A5%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%B9%D8%B1%D8%B6%20%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%3C/text%3E%0A%3C/svg%3E","time":1781721083796},{"id":"p040","name":"باقة المكتب الشهرية","cat":"offers","price":3500,"stock":8,"desc":"رزمة ورق A4، أقلام، لاصق، مشابك، ملفات ودباسة.","img":"data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22520%22%20height%3D%22360%22%20viewBox%3D%220%200%20520%20360%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23DCFCE7%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFFFFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22520%22%20height%3D%22360%22%20rx%3D%2236%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%2280%22%20cy%3D%2270%22%20r%3D%2246%22%20fill%3D%22rgba%28255%2C255%2C255%2C.55%29%22/%3E%0A%3Ccircle%20cx%3D%22460%22%20cy%3D%22290%22%20r%3D%2270%22%20fill%3D%22rgba%28255%2C255%2C255%2C.4%29%22/%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-size%3D%2286%22%3E%F0%9F%92%BC%3C/text%3E%0A%3Ctext%20x%3D%22260%22%20y%3D%22245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Tahoma%2C%20sans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%20fill%3D%22%231e293b%22%3E%D8%A8%D8%A7%D9%82%D8%A9%20%D9%85%D9%83%D8%AA%D8%A8%3C/text%3E%0A%3C/svg%3E","time":1781721082796}];
-const KP='wrq_p_v10_products',KC='wrq_c_v10_products',KI='wrq_i_v10_products',KS='wrq_s_v10_products',KA='wrq_a_v10_products';let products=get(KP,seed),basket=get(KC,[]),invoices=get(KI,[]),settings=get(KS,{name:'وراقة المدينة',phone:'00000000',addr:'موريتانيا',cur:'MRU'}),active='all',q='',sort='new',stockF='all',lastInv=null;
-function id(){return 'i'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}function get(k,f){try{return JSON.parse(localStorage.getItem(k))||f}catch{return f}}function put(){localStorage.setItem(KP,JSON.stringify(products));localStorage.setItem(KC,JSON.stringify(basket));localStorage.setItem(KI,JSON.stringify(invoices));localStorage.setItem(KS,JSON.stringify(settings))}function money(n){return (Number(n)||0).toLocaleString('fr-FR')+' '+settings.cur}function cat(c){return cats.find(x=>x[0]==c)||cats[0]}function esc(s){return String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}function note(s){let t=document.getElementById('toast');t.textContent=s;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2200)}
-function init(){shopTitle.textContent=settings.name;phoneTop.textContent=settings.phone;renderCats();renderProducts();renderCart();stats()}function stats(){sProducts.textContent=products.length;sStock.textContent=products.reduce((a,p)=>a+Number(p.stock),0);sCats.textContent=cats.length-1;sInv.textContent=invoices.length}
-function renderCats(){catList.innerHTML=cats.map(c=>`<button class="cat ${active==c[0]?'active':''}" onclick="active='${c[0]}';renderCats();renderProducts()">${c[2]} ${c[1]}</button>`).join('')}
-function list(){let a=[...products];if(active!='all')a=a.filter(p=>p.cat==active);if(q)a=a.filter(p=>(p.name+p.desc+cat(p.cat)[1]).toLowerCase().includes(q.toLowerCase()));if(stockF=='yes')a=a.filter(p=>p.stock>0);if(stockF=='low')a=a.filter(p=>p.stock>0&&p.stock<=10);if(stockF=='out')a=a.filter(p=>p.stock<=0);if(sort=='cheap')a.sort((x,y)=>x.price-y.price);if(sort=='exp')a.sort((x,y)=>y.price-x.price);if(sort=='low')a.sort((x,y)=>x.stock-y.stock);if(sort=='new')a.sort((x,y)=>y.time-x.time);return a}
-function renderProducts(){let a=list();if(!a.length){prodGrid.innerHTML='<div class="empty" style="grid-column:1/-1">لا توجد منتجات حالياً. أضف منتجات من لوحة التحكم فقط.</div>';return}prodGrid.innerHTML=a.map(p=>{let c=cat(p.cat),low=p.stock<=10&&p.stock>0,out=p.stock<=0;return `<div class="prod"><div class="pic">${p.img?`<img src="${p.img}">`:c[2]}<span class="stock ${out?'out':low?'low':''}">${out?'نفدت':low?'قليل: '+p.stock:'المخزون: '+p.stock}</span></div><div class="body"><small class="muted">${c[2]} ${c[1]}</small><h3>${esc(p.name)}</h3><p class="muted">${esc(p.desc)}</p><div class="price">${money(p.price)}</div><div class="add"><input id="q${p.id}" type="number" min="1" max="${p.stock}" value="1"><button class="btn primary" ${out?'disabled':''} onclick="addCart('${p.id}')">إضافة</button></div></div></div>`}).join('');stats()}
-function addCart(pid){let p=products.find(x=>x.id==pid),n=Math.max(1,Number(document.getElementById('q'+pid).value||1)),it=basket.find(x=>x.id==pid),old=it?it.qty:0;if(old+n>p.stock)return note('الكمية المطلوبة أكبر من المخزون');it?it.qty+=n:basket.push({id:pid,qty:n});put();renderCart();note('تمت الإضافة للسلة')}
-function renderCart(){cartCount.textContent=basket.reduce((a,i)=>a+i.qty,0);if(!basket.length){cartItems.innerHTML='<div class="empty">السلة فارغة</div>';cartTotal.textContent=money(0);return}let total=0;cartItems.innerHTML=basket.map(i=>{let p=products.find(x=>x.id==i.id);if(!p)return'';let c=cat(p.cat),s=p.price*i.qty;total+=s;return `<div class="ci"><div class="thumb">${p.img?`<img src="${p.img}">`:c[2]}</div><div><h4>${esc(p.name)}</h4><p>${money(p.price)} × ${i.qty} = ${money(s)}</p><button class="round" onclick="chg('${i.id}',-1)">−</button> <b>${i.qty}</b> <button class="round" onclick="chg('${i.id}',1)">+</button> <button class="round" onclick="rem('${i.id}')">🗑️</button></div><strong>${money(s)}</strong></div>`}).join('');cartTotal.textContent=money(total);put()}
-function chg(pid,d){let it=basket.find(x=>x.id==pid),p=products.find(x=>x.id==pid);if(!it)return;let n=it.qty+d;if(n<1)return rem(pid);if(n>p.stock)return note('لا توجد كمية أكثر');it.qty=n;renderCart()}function rem(pid){basket=basket.filter(x=>x.id!=pid);renderCart()}function openCart(){document.getElementById('cart').classList.add('on')}function closeCart(){document.getElementById('cart').classList.remove('on')}function closeModal(x){document.getElementById(x).classList.remove('on')}function openCheckout(){if(!basket.length)return note('السلة فارغة');closeCart();checkout.classList.add('on')}
-function invData(save){let lines=basket.map(i=>{let p=products.find(x=>x.id==i.id);return p?{id:p.id,name:p.name,cat:p.cat,price:p.price,qty:i.qty,total:p.price*i.qty}:null}).filter(Boolean),sub=lines.reduce((a,l)=>a+l.total,0),disc=Math.max(0,Number(document.getElementById('disc')?.value||0)),del=Math.max(0,Number(document.getElementById('deliv')?.value||0));return {id:id(),num:save?('INV-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+String(invoices.length+1).padStart(4,'0')):'معاينة',date:new Date().toLocaleString('ar-MR'),cust:{name:cName.value||'زبون',phone:cPhone.value||'',addr:cAddr.value||''},notes:notes.value||'',lines,sub,disc,del,total:Math.max(0,sub-disc+del),saved:save}}
-function previewInvoice(){lastInv=invData(false);drawInv(lastInv);invoiceM.classList.add('on')}function saveInvoice(){for(let i of basket){let p=products.find(x=>x.id==i.id);if(!p||p.stock<i.qty)return note('هناك منتج كميته غير كافية')}let inv=invData(true);inv.lines.forEach(l=>{let p=products.find(x=>x.id==l.id);p.stock-=l.qty});invoices.unshift(inv);lastInv=inv;basket=[];put();renderProducts();renderCart();stats();closeModal('checkout');drawInv(inv);invoiceM.classList.add('on');note('تم حفظ الفاتورة وخصم المخزون')}
-function drawInv(v){printArea.innerHTML=`<div class="invoice"><div class="invTop"><div class="invBrand"><div class="invLogo">📄</div><div><h1>${esc(settings.name)}</h1><p>${esc(settings.addr)}</p><p>واتساب: ${esc(settings.phone)}</p></div></div><div class="invMeta"><h2>فاتورة</h2><b>رقم: ${esc(v.num)}</b><br><b>التاريخ: ${esc(v.date)}</b></div></div><div class="boxes"><div class="box"><h3>بيانات الزبون</h3><p><b>الاسم:</b> ${esc(v.cust.name)}</p><p><b>الهاتف:</b> ${esc(v.cust.phone||'-')}</p><p><b>العنوان:</b> ${esc(v.cust.addr||'-')}</p></div><div class="box"><h3>تفاصيل</h3><p><b>عدد الأصناف:</b> ${v.lines.length}</p><p><b>إجمالي الكمية:</b> ${v.lines.reduce((a,l)=>a+l.qty,0)}</p><p><b>الحالة:</b> ${v.saved?'محفوظة':'معاينة فقط'}</p></div></div><table class="invTable"><thead><tr><th>#</th><th>المنتج</th><th class="center">القسم</th><th class="center">الكمية</th><th class="center">السعر</th><th class="center">الإجمالي</th></tr></thead><tbody>${v.lines.map((l,i)=>`<tr><td class="center">${i+1}</td><td>${esc(l.name)}</td><td class="center">${cat(l.cat)[1]}</td><td class="center">${l.qty}</td><td class="center">${money(l.price)}</td><td class="center"><b>${money(l.total)}</b></td></tr>`).join('')}</tbody></table><div class="summary"><div class="sum"><span>المجموع الجزئي</span><b>${money(v.sub)}</b></div><div class="sum"><span>التخفيض</span><b>${money(v.disc)}</b></div><div class="sum"><span>التوصيل</span><b>${money(v.del)}</b></div><div class="sum total"><span>المجموع النهائي</span><span>${money(v.total)}</span></div></div><div class="invFoot"><div class="thanks"><b>شكراً لتعاملكم معنا</b><br>${esc(v.notes||'يرجى الاحتفاظ بالفاتورة للمراجعة.')}</div><div class="stamp">ختم / توقيع المتجر</div></div></div>`}
-function sendWA(){if(!lastInv)return;let txt=`فاتورة ${lastInv.num}\n${settings.name}\nالزبون: ${lastInv.cust.name}\n`+lastInv.lines.map(l=>`- ${l.name} × ${l.qty} = ${money(l.total)}`).join('\n')+`\nالمجموع: ${money(lastInv.total)}`;let ph=(lastInv.cust.phone||settings.phone).replace(/\D/g,'');window.open(`https://wa.me/${ph}?text=${encodeURIComponent(txt)}`,'_blank')}
-function openAdmin(){adminM.classList.add('on');renderAdmin()}function login(){if(aEmail.value=='admin@waraqa.com'&&aCode.value=='12345'){sessionStorage.setItem(KA,'1');renderAdmin();note('تم الدخول')}else note('الإيميل أو الكود غير صحيح')}
-function renderAdmin(){if(sessionStorage.getItem(KA)!='1'){adminBody.innerHTML=`<div class="form" style="max-width:560px;margin:auto"><div class="field full"><label>إيميل المدير</label><input id="aEmail" value="admin@waraqa.com"></div><div class="field full"><label>الكود</label><input id="aCode" type="password" value="12345"></div><button class="btn primary full" onclick="login()">دخول</button><p class="muted full">الإيميل: admin@waraqa.com / الكود: 12345</p></div>`;return}adminBody.innerHTML=`<div class="admin"><div class="tabs"><button class="tab active" onclick="tab('dash',this)">📊 الرئيسية</button><button class="tab" onclick="tab('productsA',this)">📦 المنتجات</button><button class="tab" onclick="tab('formA',this)">➕ إضافة منتج</button><button class="tab" onclick="tab('invoicesA',this)">🧾 الفواتير</button><button class="tab" onclick="tab('settingsA',this)">🏪 إعدادات</button><button class="tab" onclick="sessionStorage.removeItem(KA);renderAdmin()">🚪 خروج</button></div><div><div class="pane active" id="dash">${dashHtml()}</div><div class="pane" id="productsA">${ptable()}</div><div class="pane" id="formA">${pform()}</div><div class="pane" id="invoicesA">${itable()}</div><div class="pane" id="settingsA">${sform()}</div></div></div>`}
-function tab(id,b){document.querySelectorAll('.pane').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');if(id=='productsA')productsA.innerHTML=ptable();if(id=='invoicesA')invoicesA.innerHTML=itable();if(id=='dash')document.getElementById('dash').innerHTML=dashHtml();if(id=='formA')formA.innerHTML=pform();if(id=='settingsA')settingsA.innerHTML=sform()}
-function dashHtml(){let low=products.filter(p=>p.stock>0&&p.stock<=10).length,out=products.filter(p=>p.stock<=0).length,sales=invoices.reduce((a,i)=>a+i.total,0);return `<div class="adminStats"><div class="stat"><b>${products.length}</b><span>منتجات</span></div><div class="stat"><b>${low}</b><span>كمية قليلة</span></div><div class="stat"><b>${out}</b><span>نفدت</span></div><div class="stat"><b>${money(sales)}</b><span>مبيعات</span></div></div><br><div class="empty">لوحة التحكم هي المكان الوحيد لإضافة المنتجات وتعديل المخزون ومراجعة الفواتير.</div>`}
-function ptable(){return `<div class="tableWrap"><table><thead><tr><th>المنتج</th><th>القسم</th><th>السعر</th><th>الكمية</th><th>إجراءات</th></tr></thead><tbody>${products.map(p=>`<tr><td>${esc(p.name)}</td><td>${cat(p.cat)[2]} ${cat(p.cat)[1]}</td><td>${money(p.price)}</td><td><b>${p.stock}</b></td><td><button class="mini ok" onclick="editP('${p.id}')">تعديل</button><button class="mini danger" onclick="delP('${p.id}')">حذف</button></td></tr>`).join('')}</tbody></table></div>`}
-function pform(p={}){return `<div class="form"><input type="hidden" id="pid" value="${p.id||''}"><div class="field"><label>اسم المنتج</label><input id="pn" value="${esc(p.name||'')}"></div><div class="field"><label>القسم</label><select id="pc">${cats.filter(c=>c[0]!='all').map(c=>`<option value="${c[0]}" ${(p.cat||'paper')==c[0]?'selected':''}>${c[2]} ${c[1]}</option>`).join('')}</select></div><div class="field"><label>السعر</label><input id="pp" type="number" min="0" value="${p.price||''}"></div><div class="field"><label>الكمية</label><input id="ps" type="number" min="0" value="${p.stock??''}"></div><div class="field full"><label>الوصف</label><textarea id="pd" rows="3">${esc(p.desc||'')}</textarea></div><div class="field full"><label>صورة اختيارية</label><input id="pi" type="file" accept="image/*"></div><button class="btn primary full" onclick="saveP()">${p.id?'حفظ التعديل':'إضافة المنتج'}</button></div>`}
-function editP(pid){let p=products.find(x=>x.id==pid);formA.innerHTML=pform(p);document.querySelectorAll('.pane').forEach(x=>x.classList.remove('active'));formA.classList.add('active')}function saveP(){let pid=window.pid.value,old=products.find(p=>p.id==pid),file=pi.files[0],data={id:pid||id(),name:pn.value.trim(),cat:pc.value,price:Number(pp.value||0),stock:Number(ps.value||0),desc:pd.value.trim()||'منتج متوفر في الوراقة',img:old?.img||'',time:Date.now()};if(!data.name)return note('اكتب اسم المنتج');let done=()=>{if(pid)products[products.findIndex(p=>p.id==pid)]=data;else products.unshift(data);put();renderProducts();renderAdmin();note('تم الحفظ')};if(file){let r=new FileReader();r.onload=e=>{data.img=e.target.result;done()};r.readAsDataURL(file)}else done()}function delP(pid){if(confirm('حذف المنتج؟')){products=products.filter(p=>p.id!=pid);basket=basket.filter(i=>i.id!=pid);put();renderProducts();renderCart();renderAdmin()}}
-function itable(){if(!invoices.length)return '<div class="empty">لا توجد فواتير محفوظة.</div>';return `<div class="tableWrap"><table><thead><tr><th>رقم</th><th>التاريخ</th><th>الزبون</th><th>المجموع</th><th>إجراء</th></tr></thead><tbody>${invoices.map(v=>`<tr><td>${v.num}</td><td>${v.date}</td><td>${esc(v.cust.name)}</td><td>${money(v.total)}</td><td><button class="mini ok" onclick="viewInv('${v.id}')">عرض/طباعة</button></td></tr>`).join('')}</tbody></table></div>`}function viewInv(i){lastInv=invoices.find(x=>x.id==i);drawInv(lastInv);invoiceM.classList.add('on')}
-function sform(){return `<div class="form"><div class="field"><label>اسم المتجر</label><input id="sn" value="${esc(settings.name)}"></div><div class="field"><label>واتساب</label><input id="sp" value="${esc(settings.phone)}"></div><div class="field"><label>العملة</label><input id="sc" value="${esc(settings.cur)}"></div><div class="field"><label>العنوان</label><input id="sa" value="${esc(settings.addr)}"></div><button class="btn primary full" onclick="settings={name:sn.value,phone:sp.value,cur:sc.value||'MRU',addr:sa.value};put();init();renderAdmin();note('تم حفظ الإعدادات')">حفظ</button></div>`}
-init();
+  const ADMIN_EMAIL = "Aichetou@gmail.com";
+  const ADMIN_CODE = "12345";
+
+  let selectedCategory = "الكل";
+  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const defaultProducts = [
+    { id: 1, name: "دفتر 100 صفحة", category: "دفاتر وكراسات", price: 50, icon: "📘", desc: "دفتر مدرسي بجودة جيدة" },
+    { id: 2, name: "كراس صغير", category: "دفاتر وكراسات", price: 30, icon: "📒", desc: "كراس صغير للكتابة اليومية" },
+    { id: 3, name: "دفتر رسم", category: "دفاتر وكراسات", price: 80, icon: "🎨", desc: "دفتر رسم للأطفال والطلاب" },
+    { id: 4, name: "قلم أزرق", category: "أقلام وكتابة", price: 10, icon: "🖊️", desc: "قلم كتابة أزرق" },
+    { id: 5, name: "قلم أسود", category: "أقلام وكتابة", price: 10, icon: "✒️", desc: "قلم كتابة أسود" },
+    { id: 6, name: "علبة أقلام تلوين", category: "أقلام وكتابة", price: 120, icon: "🖍️", desc: "ألوان مدرسية جميلة" },
+    { id: 7, name: "مسطرة", category: "لوازم مدرسية", price: 20, icon: "📏", desc: "مسطرة بلاستيكية" },
+    { id: 8, name: "ممحاة", category: "لوازم مدرسية", price: 10, icon: "🧽", desc: "ممحاة للطلاب" },
+    { id: 9, name: "مبراة", category: "لوازم مدرسية", price: 15, icon: "✏️", desc: "مبراة صغيرة" },
+    { id: 10, name: "آلة حاسبة", category: "لوازم مدرسية", price: 250, icon: "🧮", desc: "آلة حاسبة للدراسة" },
+    { id: 11, name: "ورق A4", category: "أوراق وملفات", price: 200, icon: "📄", desc: "رزمة ورق A4" },
+    { id: 12, name: "ملف بلاستيك", category: "أوراق وملفات", price: 40, icon: "📁", desc: "ملف لحفظ الأوراق" },
+    { id: 13, name: "نسخ وثيقة", category: "طباعة وتصوير", price: 5, icon: "🖨️", desc: "خدمة نسخ وتصوير" },
+    { id: 14, name: "طباعة ملونة", category: "طباعة وتصوير", price: 20, icon: "🌈", desc: "طباعة ملونة للوثائق" },
+    { id: 15, name: "تغليف هدية", category: "هدايا وتغليف", price: 60, icon: "🎁", desc: "تغليف هدايا بشكل جميل" },
+    { id: 16, name: "لاصق شفاف", category: "إكسسوارات مكتبية", price: 35, icon: "🧷", desc: "لاصق للمكتب والمدرسة" }
+  ];
+
+  function getProducts() {
+    let products = JSON.parse(localStorage.getItem("products") || "null");
+
+    if (!products) {
+      localStorage.setItem("products", JSON.stringify(defaultProducts));
+      return defaultProducts;
+    }
+
+    return products;
+  }
+
+  function setProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+
+  function getSettings() {
+    let settings = JSON.parse(localStorage.getItem("settings") || "null");
+
+    if (!settings) {
+      settings = {
+        storeName: "الوراقة الإلكترونية",
+        whatsapp: "41835226"
+      };
+      localStorage.setItem("settings", JSON.stringify(settings));
+    }
+
+    return settings;
+  }
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function renderCategories() {
+    const products = getProducts();
+    const categories = ["الكل", ...new Set(products.map(p => p.category))];
+    const box = document.getElementById("categoriesBox");
+
+    box.innerHTML = categories.map(cat => `
+      <button class="cat-btn ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
+        ${cat}
+      </button>
+    `).join("");
+  }
+
+  function selectCategory(cat) {
+    selectedCategory = cat;
+    renderCategories();
+    renderProducts();
+  }
+
+  function renderProducts() {
+    let products = getProducts();
+    const search = document.getElementById("searchInput").value.trim().toLowerCase();
+    const sort = document.getElementById("sortSelect").value;
+
+    if (selectedCategory !== "الكل") {
+      products = products.filter(p => p.category === selectedCategory);
+    }
+
+    if (search) {
+      products = products.filter(p =>
+        p.name.toLowerCase().includes(search) ||
+        p.category.toLowerCase().includes(search) ||
+        (p.desc || "").toLowerCase().includes(search)
+      );
+    }
+
+    if (sort === "low") products.sort((a, b) => a.price - b.price);
+    if (sort === "high") products.sort((a, b) => b.price - a.price);
+    if (sort === "name") products.sort((a, b) => a.name.localeCompare(b.name));
+
+    const box = document.getElementById("productsBox");
+
+    if (products.length === 0) {
+      box.innerHTML = `<div class="empty">لا توجد منتجات</div>`;
+      return;
+    }
+
+    box.innerHTML = products.map(p => `
+      <div class="product-card">
+        <span class="badge">${p.category}</span>
+
+        <div class="product-img">
+          ${isImage(p.icon) ? `<img src="${p.icon}" alt="${p.name}">` : (p.icon || "📦")}
+        </div>
+
+        <h3>${p.name}</h3>
+        <div class="price">${p.price} MRU</div>
+        <p style="font-size:13px;color:#666;min-height:35px;">${p.desc || ""}</p>
+
+        <button class="btn-main" style="width:100%;" onclick="addToCart(${p.id})">
+          أضف إلى السلة
+        </button>
+      </div>
+    `).join("");
+  }
+
+  function isImage(value) {
+    return value && (value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:image"));
+  }
+
+  function addToCart(id) {
+    const product = getProducts().find(p => p.id === id);
+    if (!product) return;
+
+    const existing = cart.find(item => item.id === id);
+
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        qty: 1
+      });
+    }
+
+    saveCart();
+    renderCart();
+    openCart();
+  }
+
+  function renderCart() {
+    const box = document.getElementById("cartItems");
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    document.getElementById("cartCount").innerText = count;
+    document.getElementById("cartTotal").innerText = total + " MRU";
+
+    if (cart.length === 0) {
+      box.innerHTML = `<div class="empty">السلة فارغة</div>`;
+      return;
+    }
+
+    box.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong>
+          <br>
+          <small>${item.price} MRU</small>
+        </div>
+
+        <div class="qty-box">
+          <button onclick="changeQty(${item.id}, -1)">-</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+
+        <button class="btn-danger" onclick="removeFromCart(${item.id})">حذف</button>
+      </div>
+    `).join("");
+  }
+
+  function changeQty(id, amount) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+
+    item.qty += amount;
+
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+
+    saveCart();
+    renderCart();
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(i => i.id !== id);
+    saveCart();
+    renderCart();
+  }
+
+  function clearCart() {
+    cart = [];
+    saveCart();
+    renderCart();
+  }
+
+  function openCart() {
+    document.getElementById("cartPanel").classList.add("open");
+  }
+
+  function closeCart() {
+    document.getElementById("cartPanel").classList.remove("open");
+  }
+
+  function openAdmin() {
+    document.getElementById("adminPanel").classList.add("open");
+  }
+
+  function closeAdmin() {
+    document.getElementById("adminPanel").classList.remove("open");
+  }
+
+  function sendOrder() {
+    if (cart.length === 0) {
+      alert("السلة فارغة");
+      return;
+    }
+
+    const settings = getSettings();
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    saveOrderInvoice(cart, total);
+
+    let message = `طلب جديد من ${settings.storeName}%0A%0A`;
+
+    cart.forEach(item => {
+      message += `- ${item.name} × ${item.qty} = ${item.price * item.qty} MRU%0A`;
+    });
+
+    message += `%0Aالمجموع: ${total} MRU`;
+
+    const phone = settings.whatsapp.replace(/\D/g, "");
+    window.open(`https://wa.me/222${phone}?text=${message}`, "_blank");
+
+    cart = [];
+    saveCart();
+    renderCart();
+
+    alert("تم حفظ الطلب في فواتير لوحة التحكم");
+  }
+
+  function saveOrderInvoice(orderItems, total) {
+    let invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
+
+    const invoice = {
+      id: Date.now(),
+      date: new Date().toLocaleString("ar"),
+      items: JSON.parse(JSON.stringify(orderItems)),
+      total: total
+    };
+
+    invoices.unshift(invoice);
+    localStorage.setItem("invoices", JSON.stringify(invoices));
+  }
+
+  function adminLogin() {
+    const email = document.getElementById("adminEmail").value.trim();
+    const code = document.getElementById("adminCode").value.trim();
+
+    if (email === ADMIN_EMAIL && code === ADMIN_CODE) {
+      localStorage.setItem("adminLogged", "yes");
+      showAdminContent();
+    } else {
+      alert("الإيميل أو الكود غير صحيح");
+    }
+  }
+
+  function showAdminContent() {
+    document.getElementById("adminLogin").classList.add("hidden");
+    document.getElementById("adminContent").classList.remove("hidden");
+    renderAdminProducts();
+    renderInvoices();
+    loadSettingsForm();
+  }
+
+  function logoutAdmin() {
+    localStorage.removeItem("adminLogged");
+    document.getElementById("adminLogin").classList.remove("hidden");
+    document.getElementById("adminContent").classList.add("hidden");
+  }
+
+  function showAdminTab(tab) {
+    document.getElementById("adminProductsBox").classList.add("hidden");
+    document.getElementById("adminInvoicesBox").classList.add("hidden");
+    document.getElementById("adminSettingsBox").classList.add("hidden");
+
+    document.getElementById("tabProducts").classList.remove("active");
+    document.getElementById("tabInvoices").classList.remove("active");
+    document.getElementById("tabSettings").classList.remove("active");
+
+    if (tab === "products") {
+      document.getElementById("adminProductsBox").classList.remove("hidden");
+      document.getElementById("tabProducts").classList.add("active");
+      renderAdminProducts();
+    }
+
+    if (tab === "invoices") {
+      document.getElementById("adminInvoicesBox").classList.remove("hidden");
+      document.getElementById("tabInvoices").classList.add("active");
+      renderInvoices();
+    }
+
+    if (tab === "settings") {
+      document.getElementById("adminSettingsBox").classList.remove("hidden");
+      document.getElementById("tabSettings").classList.add("active");
+      loadSettingsForm();
+    }
+  }
+
+  function saveProduct() {
+    const idValue = document.getElementById("editProductId").value;
+    const name = document.getElementById("productName").value.trim();
+    const category = document.getElementById("productCategory").value;
+    const price = Number(document.getElementById("productPrice").value);
+    const icon = document.getElementById("productIcon").value.trim() || "📦";
+    const desc = document.getElementById("productDesc").value.trim();
+
+    if (!name || !price) {
+      alert("أدخل اسم المنتج والسعر");
+      return;
+    }
+
+    let products = getProducts();
+
+    if (idValue) {
+      const id = Number(idValue);
+      products = products.map(p => {
+        if (p.id === id) {
+          return { id, name, category, price, icon, desc };
+        }
+        return p;
+      });
+    } else {
+      products.push({
+        id: Date.now(),
+        name,
+        category,
+        price,
+        icon,
+        desc
+      });
+    }
+
+    setProducts(products);
+    clearProductForm();
+    renderProducts();
+    renderCategories();
+    renderAdminProducts();
+  }
+
+  function renderAdminProducts() {
+    const products = getProducts();
+    const box = document.getElementById("adminProductsList");
+
+    if (products.length === 0) {
+      box.innerHTML = `<div class="empty">لا توجد منتجات</div>`;
+      return;
+    }
+
+    box.innerHTML = products.map(p => `
+      <div class="admin-product">
+        <strong>${p.icon} ${p.name}</strong>
+        <br>
+        <small>${p.category} | ${p.price} MRU</small>
+        <p style="font-size:13px;color:#666;">${p.desc || ""}</p>
+
+        <button class="btn-warning" onclick="editProduct(${p.id})">تعديل</button>
+        <button class="btn-danger" onclick="deleteProduct(${p.id})">حذف</button>
+      </div>
+    `).join("");
+  }
+
+  function editProduct(id) {
+    const product = getProducts().find(p => p.id === id);
+    if (!product) return;
+
+    document.getElementById("editProductId").value = product.id;
+    document.getElementById("productName").value = product.name;
+    document.getElementById("productCategory").value = product.category;
+    document.getElementById("productPrice").value = product.price;
+    document.getElementById("productIcon").value = product.icon;
+    document.getElementById("productDesc").value = product.desc || "";
+    document.getElementById("formTitle").innerText = "تعديل المنتج";
+    document.getElementById("cancelEditBtn").classList.remove("hidden");
+  }
+
+  function deleteProduct(id) {
+    if (!confirm("هل تريد حذف المنتج؟")) return;
+
+    let products = getProducts().filter(p => p.id !== id);
+    setProducts(products);
+
+    renderProducts();
+    renderCategories();
+    renderAdminProducts();
+  }
+
+  function cancelEdit() {
+    clearProductForm();
+  }
+
+  function clearProductForm() {
+    document.getElementById("editProductId").value = "";
+    document.getElementById("productName").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productIcon").value = "";
+    document.getElementById("productDesc").value = "";
+    document.getElementById("formTitle").innerText = "إضافة منتج";
+    document.getElementById("cancelEditBtn").classList.add("hidden");
+  }
+
+  function renderInvoices() {
+    const invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
+    const box = document.getElementById("invoicesList");
+
+    if (invoices.length === 0) {
+      box.innerHTML = `<div class="empty">لا توجد فواتير بعد</div>`;
+      return;
+    }
+
+    box.innerHTML = invoices.map(inv => `
+      <div class="invoice-card">
+        <h4>فاتورة رقم: ${inv.id}</h4>
+        <p>التاريخ: ${inv.date}</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>المنتج</th>
+              <th>الكمية</th>
+              <th>السعر</th>
+              <th>المجموع</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${inv.items.map(item => `
+              <tr>
+                <td>${item.name}</td>
+                <td>${item.qty}</td>
+                <td>${item.price} MRU</td>
+                <td>${item.price * item.qty} MRU</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+
+        <h3>المجموع: ${inv.total} MRU</h3>
+
+        <button class="btn-main" onclick="printInvoice(${inv.id})">🖨️ طباعة</button>
+        <button class="btn-danger" onclick="deleteInvoice(${inv.id})">حذف</button>
+      </div>
+    `).join("");
+  }
+
+  function printInvoice(id) {
+    const invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
+    const inv = invoices.find(i => i.id === id);
+    const settings = getSettings();
+
+    if (!inv) return;
+
+    const printArea = document.getElementById("printArea");
+
+    printArea.classList.remove("hidden");
+
+    printArea.innerHTML = `
+      <div style="padding:30px; direction:rtl; font-family:Arial;">
+        <div style="max-width:750px; margin:auto; border:2px solid #0f766e; border-radius:18px; padding:25px;">
+          <h1 style="text-align:center; color:#0f766e;">${settings.storeName}</h1>
+          <h2 style="text-align:center;">فاتورة بيع</h2>
+
+          <p><strong>رقم الفاتورة:</strong> ${inv.id}</p>
+          <p><strong>التاريخ:</strong> ${inv.date}</p>
+          <p><strong>الهاتف / واتساب:</strong> ${settings.whatsapp}</p>
+
+          <table style="width:100%; border-collapse:collapse; margin-top:20px;">
+            <thead>
+              <tr>
+                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">المنتج</th>
+                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">الكمية</th>
+                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">السعر</th>
+                <th style="border:1px solid #ddd;padding:10px;background:#0f766e;color:white;">المجموع</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${inv.items.map(item => `
+                <tr>
+                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.name}</td>
+                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.qty}</td>
+                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.price} MRU</td>
+                  <td style="border:1px solid #ddd;padding:10px;text-align:center;">${item.price * item.qty} MRU</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+
+          <h2 style="text-align:left; color:#0f766e;">المجموع: ${inv.total} MRU</h2>
+
+          <p style="text-align:center; margin-top:35px; color:#555;">
+            شكرا لتعاملكم معنا
+          </p>
+        </div>
+      </div>
+    `;
+
+    window.print();
+
+    setTimeout(() => {
+      printArea.classList.add("hidden");
+      printArea.innerHTML = "";
+    }, 1000);
+  }
+
+  function deleteInvoice(id) {
+    if (!confirm("هل تريد حذف الفاتورة؟")) return;
+
+    let invoices = JSON.parse(localStorage.getItem("invoices") || "[]");
+    invoices = invoices.filter(i => i.id !== id);
+    localStorage.setItem("invoices", JSON.stringify(invoices));
+
+    renderInvoices();
+  }
+
+  function loadSettingsForm() {
+    const settings = getSettings();
+
+    document.getElementById("storeNameInput").value = settings.storeName;
+    document.getElementById("whatsappInput").value = settings.whatsapp;
+  }
+
+  function saveSettings() {
+    const storeName = document.getElementById("storeNameInput").value.trim() || "الوراقة الإلكترونية";
+    const whatsapp = document.getElementById("whatsappInput").value.trim() || "41835226";
+
+    localStorage.setItem("settings", JSON.stringify({
+      storeName,
+      whatsapp
+    }));
+
+    document.querySelector(".logo").innerText = "📚 " + storeName;
+    alert("تم حفظ الإعدادات");
+  }
+
+  function init() {
+    const settings = getSettings();
+    document.querySelector(".logo").innerText = "📚 " + settings.storeName;
+
+    renderCategories();
+    renderProducts();
+    renderCart();
+
+    if (localStorage.getItem("adminLogged") === "yes") {
+      showAdminContent();
+    }
+  }
+
+  init();
 </script>
-</body></html>
+
+</body>
+</html>
