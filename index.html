@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الوراقة الإلكترونية</title>
 
   <style>
@@ -283,6 +283,7 @@
       padding: 22px;
       text-align: center;
       color: #64748b;
+      width: 100%;
     }
 
     .login-box,
@@ -394,7 +395,7 @@
 </header>
 
 <section class="hero">
-  <h1>الوراقة الإلكترونية</h1>
+  <h1>مرحبا بكم في الوراقة الإلكترونية</h1>
   <p>دفاتر، أقلام، طباعة، أوراق، ملفات، لوازم مدرسية وخدمات مكتبية</p>
 </section>
 
@@ -414,7 +415,6 @@
   <section class="products" id="productsBox"></section>
 </main>
 
-<!-- السلة للزبون فقط: لا توجد فاتورة هنا -->
 <aside class="side-panel" id="cartPanel">
   <div class="panel-head">
     <h2>🛒 السلة</h2>
@@ -437,7 +437,6 @@
   </button>
 </aside>
 
-<!-- لوحة التحكم: المنتجات + الفواتير -->
 <aside class="side-panel" id="adminPanel">
   <div class="panel-head">
     <h2>⚙️ لوحة التحكم</h2>
@@ -466,15 +465,7 @@
 
       <input id="productName" type="text" placeholder="اسم المنتج">
 
-      <select id="productCategory">
-        <option value="دفاتر وكراسات">دفاتر وكراسات</option>
-        <option value="أقلام وكتابة">أقلام وكتابة</option>
-        <option value="طباعة وتصوير">طباعة وتصوير</option>
-        <option value="أوراق وملفات">أوراق وملفات</option>
-        <option value="لوازم مدرسية">لوازم مدرسية</option>
-        <option value="حقائب وهدايا">حقائب وهدايا</option>
-        <option value="إكسسوارات مكتبية">إكسسوارات مكتبية</option>
-      </select>
+      <select id="productCategory"></select>
 
       <input id="productPrice" type="number" placeholder="السعر MRU">
       <input id="productIcon" type="text" placeholder="أيقونة أو رابط صورة مثال: 📘">
@@ -482,6 +473,10 @@
 
       <button class="btn-main" style="width:100%;" onclick="saveProduct()">حفظ المنتج</button>
       <button class="btn-orange hidden" id="cancelEditBtn" style="width:100%; margin-top:8px;" onclick="cancelEdit()">إلغاء التعديل</button>
+
+      <button class="btn-orange" style="width:100%; margin-top:8px;" onclick="restoreDefaultProducts()">
+        إعادة المنتجات الافتراضية
+      </button>
 
       <h3>المنتجات الموجودة</h3>
       <div id="adminProductsList"></div>
@@ -510,6 +505,19 @@
 <script>
   const ADMIN_EMAIL = "admin@waraqa.com";
   const ADMIN_PASS = "12345";
+
+  const ALL_CATEGORIES = [
+    "الكل",
+    "دفاتر وكراسات",
+    "أقلام وكتابة",
+    "طباعة وتصوير",
+    "أوراق وملفات",
+    "لوازم مدرسية",
+    "حقائب وهدايا",
+    "إكسسوارات مكتبية",
+    "كتب ومجلات",
+    "خدمات مكتبية"
+  ];
 
   let selectedCategory = "الكل";
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -544,37 +552,14 @@
 
     { id: 22, name: "لاصق شفاف", category: "إكسسوارات مكتبية", price: 35, icon: "🧷", desc: "لاصق للمكتب والمدرسة" },
     { id: 23, name: "دباسة", category: "إكسسوارات مكتبية", price: 150, icon: "📎", desc: "دباسة مكتبية" },
-    { id: 24, name: "مشابك ورق", category: "إكسسوارات مكتبية", price: 25, icon: "📎", desc: "مشابك لتنظيم الأوراق" }
+    { id: 24, name: "مشابك ورق", category: "إكسسوارات مكتبية", price: 25, icon: "📎", desc: "مشابك لتنظيم الأوراق" },
+
+    { id: 25, name: "كتاب قراءة", category: "كتب ومجلات", price: 180, icon: "📚", desc: "كتاب مناسب للطلاب" },
+    { id: 26, name: "مجلة أطفال", category: "كتب ومجلات", price: 100, icon: "📰", desc: "مجلة تعليمية للأطفال" },
+
+    { id: 27, name: "كتابة طلب إداري", category: "خدمات مكتبية", price: 100, icon: "📝", desc: "كتابة طلب أو وثيقة" },
+    { id: 28, name: "سحب وثيقة PDF", category: "خدمات مكتبية", price: 50, icon: "📑", desc: "تحميل وسحب الوثائق" }
   ];
-
-  function getProducts() {
-    let products = JSON.parse(localStorage.getItem("products") || "null");
-    if (!products) {
-      products = defaultProducts;
-      localStorage.setItem("products", JSON.stringify(products));
-    }
-    return products;
-  }
-
-  function setProducts(products) {
-    localStorage.setItem("products", JSON.stringify(products));
-  }
-
-  function getSettings() {
-    let settings = JSON.parse(localStorage.getItem("settings") || "null");
-    if (!settings) {
-      settings = {
-        storeName: "الوراقة الإلكترونية",
-        whatsapp: "41835226"
-      };
-      localStorage.setItem("settings", JSON.stringify(settings));
-    }
-    return settings;
-  }
-
-  function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
 
   function escapeHtml(text) {
     return String(text || "")
@@ -585,19 +570,66 @@
       .replaceAll("'", "&#039;");
   }
 
+  function getProducts() {
+    let products = JSON.parse(localStorage.getItem("products") || "null");
+
+    if (!Array.isArray(products) || products.length < 3) {
+      products = defaultProducts;
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+
+    return products;
+  }
+
+  function setProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
+  }
+
+  function restoreDefaultProducts() {
+    if (!confirm("هل تريد إعادة المنتجات الافتراضية؟")) return;
+    localStorage.setItem("products", JSON.stringify(defaultProducts));
+    renderAll();
+    alert("تمت إعادة المنتجات الافتراضية");
+  }
+
+  function getSettings() {
+    let settings = JSON.parse(localStorage.getItem("settings") || "null");
+
+    if (!settings) {
+      settings = {
+        storeName: "الوراقة الإلكترونية",
+        whatsapp: "41835226"
+      };
+      localStorage.setItem("settings", JSON.stringify(settings));
+    }
+
+    return settings;
+  }
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
   function isImage(value) {
     value = String(value || "");
     return value.startsWith("http://") || value.startsWith("https://") || value.startsWith("data:image");
   }
 
+  function renderAdminCategoryOptions() {
+    const select = document.getElementById("productCategory");
+    const categories = ALL_CATEGORIES.filter(c => c !== "الكل");
+
+    select.innerHTML = categories.map(cat => `
+      <option value="${escapeHtml(cat)}">${escapeHtml(cat)}</option>
+    `).join("");
+  }
+
   function renderCategories() {
-    const products = getProducts();
-    const categories = ["الكل", ...new Set(products.map(p => p.category))];
     const box = document.getElementById("categoriesBox");
 
-    box.innerHTML = categories.map(cat => `
-      <button class="cat-btn ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${escapeHtml(cat)}')">
-        ${escapeHtml(cat)}
+    box.innerHTML = ALL_CATEGORIES.map(cat => `
+      <button class="cat-btn ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
+        ${cat}
       </button>
     `).join("");
   }
@@ -619,20 +651,20 @@
 
     if (search) {
       products = products.filter(p =>
-        p.name.toLowerCase().includes(search) ||
-        p.category.toLowerCase().includes(search) ||
+        String(p.name).toLowerCase().includes(search) ||
+        String(p.category).toLowerCase().includes(search) ||
         String(p.desc || "").toLowerCase().includes(search)
       );
     }
 
-    if (sort === "low") products.sort((a, b) => a.price - b.price);
-    if (sort === "high") products.sort((a, b) => b.price - a.price);
-    if (sort === "name") products.sort((a, b) => a.name.localeCompare(b.name));
+    if (sort === "low") products.sort((a, b) => Number(a.price) - Number(b.price));
+    if (sort === "high") products.sort((a, b) => Number(b.price) - Number(a.price));
+    if (sort === "name") products.sort((a, b) => String(a.name).localeCompare(String(b.name)));
 
     const box = document.getElementById("productsBox");
 
     if (products.length === 0) {
-      box.innerHTML = `<div class="empty">لا توجد منتجات</div>`;
+      box.innerHTML = `<div class="empty">لا توجد منتجات في هذا القسم</div>`;
       return;
     }
 
@@ -682,8 +714,8 @@
 
   function renderCart() {
     const box = document.getElementById("cartItems");
-    const count = cart.reduce((sum, item) => sum + item.qty, 0);
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const count = cart.reduce((sum, item) => sum + Number(item.qty), 0);
+    const total = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.qty), 0);
 
     document.getElementById("cartCount").innerText = count;
     document.getElementById("cartTotal").innerText = total + " MRU";
@@ -760,14 +792,14 @@
     }
 
     const settings = getSettings();
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const total = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.qty), 0);
 
     saveInvoice(cart, total);
 
     let message = `طلب جديد من ${settings.storeName}%0A%0A`;
 
     cart.forEach(item => {
-      message += `- ${item.name} × ${item.qty} = ${item.price * item.qty} MRU%0A`;
+      message += `- ${item.name} × ${item.qty} = ${Number(item.price) * Number(item.qty)} MRU%0A`;
     });
 
     message += `%0Aالمجموع: ${total} MRU`;
@@ -895,9 +927,7 @@
 
     setProducts(products);
     clearProductForm();
-    renderCategories();
-    renderProducts();
-    renderAdminProducts();
+    renderAll();
 
     alert("تم حفظ المنتج");
   }
@@ -943,9 +973,7 @@
     let products = getProducts().filter(p => Number(p.id) !== Number(id));
     setProducts(products);
 
-    renderCategories();
-    renderProducts();
-    renderAdminProducts();
+    renderAll();
   }
 
   function cancelEdit() {
@@ -1169,13 +1197,20 @@
     alert("تم حفظ الإعدادات");
   }
 
+  function renderAll() {
+    renderCategories();
+    renderProducts();
+    renderCart();
+    renderAdminProducts();
+    renderInvoices();
+  }
+
   function init() {
     const settings = getSettings();
     document.getElementById("logoText").innerText = "📚 " + settings.storeName;
 
-    renderCategories();
-    renderProducts();
-    renderCart();
+    renderAdminCategoryOptions();
+    renderAll();
 
     if (localStorage.getItem("adminLogged") === "yes") {
       showAdmin();
