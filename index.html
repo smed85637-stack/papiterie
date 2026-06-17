@@ -35,7 +35,7 @@
     .card h3{font-size:16px;margin:8px 0}
     .desc{color:#64748b;font-size:13px;min-height:36px}
     .price{color:#0f766e;font-size:18px;font-weight:900;margin:8px 0 12px}
-    .side-panel{position:fixed;top:0;left:-100%;width:440px;max-width:95%;height:100%;background:white;z-index:2000;box-shadow:5px 0 25px rgba(0,0,0,.25);transition:.3s;padding:18px;overflow-y:auto}
+    .side-panel{position:fixed;top:0;left:-100%;width:450px;max-width:95%;height:100%;background:white;z-index:2000;box-shadow:5px 0 25px rgba(0,0,0,.25);transition:.3s;padding:18px;overflow-y:auto}
     .side-panel.open{left:0}
     .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
     .close{width:40px;height:40px;border-radius:50%;background:#e5e7eb;color:#111827;font-size:20px}
@@ -57,6 +57,7 @@
     table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
     th,td{border:1px solid #d1d5db;padding:8px;text-align:center}
     th{background:#0f766e;color:white}
+    .notice{background:#ecfdf5;color:#065f46;border:1px solid #99f6e4;border-radius:14px;padding:10px;margin:8px 0;font-weight:bold}
     .hidden{display:none!important}
     footer{text-align:center;padding:22px;color:#64748b}
 
@@ -183,9 +184,7 @@
     <!-- الفواتير -->
     <section id="invoicesAdminSection" class="hidden">
       <h3>🧾 الفواتير</h3>
-      <p style="color:#64748b">
-        يمكنك إضافة فاتورة يدويًا من هنا، أو يتم إنشاء الفاتورة تلقائيًا عند إرسال الطلب من السلة.
-      </p>
+      <div class="notice">رقم واتساب المتجر في كل فاتورة: 37929637</div>
 
       <div class="manual-invoice-box">
         <h3>➕ إضافة فاتورة جديدة</h3>
@@ -216,8 +215,8 @@
     <section id="settingsAdminSection" class="hidden">
       <h3>إعدادات المتجر</h3>
       <input id="storeNameInput" type="text" placeholder="اسم المتجر">
-      <input id="whatsappInput" type="text" placeholder="رقم واتساب المتجر">
-      <button class="btn-main" style="width:100%" onclick="saveSettings()">حفظ الإعدادات</button>
+      <div class="notice">رقم واتساب المتجر ثابت: 37929637</div>
+      <button class="btn-main" style="width:100%" onclick="saveSettings()">حفظ اسم المتجر</button>
       <button class="btn-red" style="width:100%;margin-top:12px" onclick="logoutAdmin()">تسجيل الخروج</button>
     </section>
   </div>
@@ -228,6 +227,7 @@
 <script>
   const ADMIN_EMAIL = "admin@waraqa.com";
   const ADMIN_PASS = "12345";
+  const STORE_WHATSAPP = "37929637";
 
   const ALL_CATEGORIES = [
     "الكل",
@@ -276,10 +276,12 @@
 
   function getProducts(){
     let products = JSON.parse(localStorage.getItem("products") || "null");
+
     if(!Array.isArray(products)){
       products = defaultProducts;
       localStorage.setItem("products", JSON.stringify(products));
     }
+
     return products;
   }
 
@@ -296,13 +298,16 @@
 
   function getSettings(){
     let settings = JSON.parse(localStorage.getItem("settings") || "null");
+
     if(!settings){
       settings = {
-        storeName:"الوراقة الإلكترونية",
-        whatsapp:"37929637"
+        storeName:"الوراقة الإلكترونية"
       };
-      localStorage.setItem("settings", JSON.stringify(settings));
     }
+
+    settings.whatsapp = STORE_WHATSAPP;
+    localStorage.setItem("settings", JSON.stringify(settings));
+
     return settings;
   }
 
@@ -319,9 +324,11 @@
     if(product.image){
       return `<img src="${product.image}" alt="${escapeHtml(product.name)}">`;
     }
+
     if(isImage(product.icon)){
       return `<img src="${escapeHtml(product.icon)}" alt="${escapeHtml(product.name)}">`;
     }
+
     return escapeHtml(product.icon || "📦");
   }
 
@@ -564,20 +571,20 @@
     const settings = getSettings();
     const total = cart.reduce((sum,item) => sum + Number(item.price) * Number(item.qty),0);
 
-    const invoice = saveInvoice(cart,total,customerName,customerPhone);
+    saveInvoice(cart,total,customerName,customerPhone);
 
-    let message = `طلب جديد من ${settings.storeName}%0A%0A`;
-    message += `اسم الزبون: ${customerName}%0A`;
-    message += `واتساب الزبون: ${customerPhone}%0A%0A`;
+    let text = `طلب جديد من ${settings.storeName}\n\n`;
+    text += `اسم الزبون: ${customerName}\n`;
+    text += `واتساب الزبون: ${customerPhone}\n\n`;
 
     cart.forEach(item => {
-      message += `- ${item.name} × ${item.qty} = ${Number(item.price) * Number(item.qty)} MRU%0A`;
+      text += `- ${item.name} × ${item.qty} = ${Number(item.price) * Number(item.qty)} MRU\n`;
     });
 
-    message += `%0Aالمجموع: ${total} MRU`;
+    text += `\nالمجموع: ${total} MRU`;
 
-    const storePhone = normalizePhone(settings.whatsapp);
-    window.open(`https://wa.me/${storePhone}?text=${message}`,"_blank");
+    const storePhone = normalizePhone(STORE_WHATSAPP);
+    window.open(`https://wa.me/${storePhone}?text=${encodeURIComponent(text)}`,"_blank");
 
     cart = [];
     saveCart();
@@ -595,6 +602,7 @@
       date: new Date().toLocaleString("ar"),
       customerName: customerName || "زبون",
       customerPhone: customerPhone || "",
+      storeWhatsapp: STORE_WHATSAPP,
       items: JSON.parse(JSON.stringify(items)),
       total: total
     };
@@ -854,7 +862,7 @@
 
     const total = manualInvoiceItems.reduce((sum,item) => sum + Number(item.qty) * Number(item.price),0);
 
-    const invoice = saveInvoice(manualInvoiceItems,total,customerName,customerPhone);
+    saveInvoice(manualInvoiceItems,total,customerName,customerPhone);
 
     manualInvoiceItems = [];
     document.getElementById("manualCustomerName").value = "";
@@ -882,6 +890,7 @@
         <p><strong>التاريخ:</strong> ${escapeHtml(inv.date)}</p>
         <p><strong>اسم الزبون:</strong> ${escapeHtml(inv.customerName || "زبون")}</p>
         <p><strong>واتساب الزبون:</strong> ${escapeHtml(inv.customerPhone || "غير موجود")}</p>
+        <p><strong>واتساب المتجر:</strong> ${STORE_WHATSAPP}</p>
 
         <table>
           <thead>
@@ -917,17 +926,18 @@
   function buildInvoiceText(inv){
     const settings = getSettings();
 
-    let text = `فاتورة من ${settings.storeName}%0A`;
-    text += `رقم الفاتورة: ${inv.id}%0A`;
-    text += `التاريخ: ${inv.date}%0A`;
-    text += `اسم الزبون: ${inv.customerName || "زبون"}%0A%0A`;
+    let text = `فاتورة من ${settings.storeName}\n`;
+    text += `رقم الفاتورة: ${inv.id}\n`;
+    text += `التاريخ: ${inv.date}\n`;
+    text += `اسم الزبون: ${inv.customerName || "زبون"}\n`;
+    text += `واتساب المتجر: ${STORE_WHATSAPP}\n\n`;
 
     inv.items.forEach(item => {
-      text += `- ${item.name} × ${item.qty} = ${Number(item.price) * Number(item.qty)} MRU%0A`;
+      text += `- ${item.name} × ${item.qty} = ${Number(item.price) * Number(item.qty)} MRU\n`;
     });
 
-    text += `%0Aالمجموع: ${inv.total} MRU%0A`;
-    text += `%0Aشكرا لتعاملكم معنا`;
+    text += `\nالمجموع: ${inv.total} MRU\n`;
+    text += `\nشكرا لتعاملكم معنا`;
 
     return text;
   }
@@ -946,7 +956,7 @@
     const phone = normalizePhone(inv.customerPhone);
     const text = buildInvoiceText(inv);
 
-    window.open(`https://wa.me/${phone}?text=${text}`,"_blank");
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`,"_blank");
   }
 
   function printInvoice(id){
@@ -995,7 +1005,7 @@
             <p><strong>التاريخ:</strong> ${escapeHtml(inv.date)}</p>
             <p><strong>اسم الزبون:</strong> ${escapeHtml(inv.customerName || "زبون")}</p>
             <p><strong>واتساب الزبون:</strong> ${escapeHtml(inv.customerPhone || "")}</p>
-            <p><strong>واتساب المتجر:</strong> ${escapeHtml(settings.whatsapp)}</p>
+            <p><strong>واتساب المتجر:</strong> ${STORE_WHATSAPP}</p>
           </div>
 
           <table>
@@ -1038,23 +1048,20 @@
 
   function loadSettings(){
     const settings = getSettings();
-
     document.getElementById("storeNameInput").value = settings.storeName;
-    document.getElementById("whatsappInput").value = settings.whatsapp;
   }
 
   function saveSettings(){
     const storeName = document.getElementById("storeNameInput").value.trim() || "الوراقة الإلكترونية";
-    const whatsapp = document.getElementById("whatsappInput").value.trim() || "37929637";
 
     localStorage.setItem("settings", JSON.stringify({
       storeName,
-      whatsapp
+      whatsapp: STORE_WHATSAPP
     }));
 
     document.getElementById("logoText").innerText = "📚 " + storeName;
 
-    alert("تم حفظ الإعدادات");
+    alert("تم حفظ اسم المتجر");
   }
 
   function renderAll(){
