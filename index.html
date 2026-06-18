@@ -36,7 +36,7 @@ textarea{min-height:80px;resize:vertical}
 .card h3{font-size:16px;margin:8px 0}
 .desc{color:#64748b;font-size:13px;min-height:36px}
 .price{color:#0f766e;font-size:18px;font-weight:900;margin:8px 0 12px}
-.side-panel{position:fixed;top:0;left:-100%;width:450px;max-width:95%;height:100%;background:white;z-index:2000;box-shadow:5px 0 25px #0004;transition:.3s;padding:18px;overflow-y:auto}
+.side-panel{position:fixed;top:0;left:-100%;width:460px;max-width:95%;height:100%;background:white;z-index:2000;box-shadow:5px 0 25px #0004;transition:.3s;padding:18px;overflow-y:auto}
 .side-panel.open{left:0}
 .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
 .close{width:40px;height:40px;border-radius:50%;background:#e5e7eb;color:#111827;font-size:20px}
@@ -135,15 +135,8 @@ button{padding:9px 10px}
 
   <div class="login-box" id="loginBox">
     <h3>تسجيل دخول المدير</h3>
-
-    <div class="notice">
-      الإيميل: admin@waraqa.com<br>
-      الكود: 12345
-    </div>
-
     <input id="adminEmail" type="email" placeholder="إيميل المدير">
     <input id="adminPass" type="password" placeholder="كود المدير">
-
     <button class="btn-main" style="width:100%" onclick="loginAdmin()">دخول</button>
   </div>
 
